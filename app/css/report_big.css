@@ -1,0 +1,48 @@
+.cell {
+    padding: 3px;
+    font-size: 12px;
+    border-bottom: #808080 0.15pt solid;
+}
+.cell-header {
+    font-weight: bold;
+    padding: 5px;
+    border-bottom: #808080 3px double;
+    font-size: 14px;
+    font-weight: bold;
+}
+.header-text {
+    font-size: 12px;
+    text-align: center;
+    padding-top: 1px;
+    padding-bottom: 1px;
+}
+.text-right {
+    text-align: right;
+}
+.text-center {
+    text-align: center;
+}
+.bold {
+    font-weight: bold;
+}
+.row {
+    font-size: 12px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+.blank-row {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: #808080 1px solid;
+}
+.text {
+    font-size: 12px;
+}
+.cell-footer {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: right;
+    border-bottom: #808080 3px double;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
