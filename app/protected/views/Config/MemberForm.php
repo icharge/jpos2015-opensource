@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">บันทึกข้อมูลสมาชิกร้าน</div>
     <div class="panel-body">
       
@@ -16,6 +16,15 @@
 				<?php echo $form->textField($model, 'member_code', array(
 				'class' => 'form-control',
 				'style' => 'width: 200px'
+				)); ?>
+			</div>
+
+			<div>
+				<?php echo $form->labelEx($model, 'tax_code'); ?>
+				<?php echo $form->textField($model, 'tax_code', array(
+				'class' => 'form-control',
+				'style' => 'width: 200px',
+				'maxLength' => '13'
 				)); ?>
 			</div>
 			
@@ -63,7 +72,7 @@
 			
       <div>
 				<label></label>
-				<a href="#" class="btn btn-primary" onclick="formMember.submit()">
+				<a href="#" class="btn btn-info" onclick="formMember.submit()">
 					<b class="glyphicon glyphicon-floppy-disk"></b>
 					Save
 				</a>

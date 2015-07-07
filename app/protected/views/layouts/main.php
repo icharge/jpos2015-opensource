@@ -2,7 +2,7 @@
 
 <?php 
 ini_set("memory_limit", "15000M");
-$version = "2015.06.22";
+$version = "2015.07.075";
 Yii::app()->timeZone = 'Asia/Bangkok'; 
 
 date_default_timezone_set('Asia/Bangkok');
@@ -11,6 +11,7 @@ date_default_timezone_set('Asia/Bangkok');
 
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="language" content="en" />
     <meta charset="utf-8" />
@@ -18,7 +19,6 @@ date_default_timezone_set('Asia/Bangkok');
     <?php
     // css
     echo CHtml::cssFile('css/bootstrap.css');
-    echo CHtml::cssFile('css/bootstrap-theme.css');
     echo CHtml::cssFile('css/ui-lightness/jquery-ui-1.10.3.custom.css');
 
     // js
@@ -123,13 +123,15 @@ date_default_timezone_set('Asia/Bangkok');
       .mynav ul li {
         padding: 0px;
       }
+
+      <?php $this->renderPartial('//site/bootflat'); ?>
     </style>
 
     <script type="text/javascript">
       var dateBefore=null;
 
       function initCalendar() {
-        $(".calendar").datepicker({
+        $(".datepicker").datepicker({
           dateFormat: 'dd/mm/yy',
           changeMonth: true,
           changeYear: true,
@@ -169,12 +171,17 @@ date_default_timezone_set('Asia/Bangkok');
 
       function upToNewVersion() {
         $.ajax({
-          url: 'index.php?r=Help/UpToNewVersion',
-          success: function(data) {
-            if (data == 'success') {
-              alert('update version เรียบร้อย');
-              location.reload();
-            }
+          url: 'index.php?r=Help/UpdateSoftwareNow',
+          success: function() {
+            $.ajax({
+              url: 'index.php?r=Help/UpToNewVersion',
+              success: function(data) {
+                if (data == 'success') {
+                  alert('update version เรียบร้อย');
+                  location.reload();
+                }
+              }
+            });
           }
         });
       }
@@ -183,7 +190,7 @@ date_default_timezone_set('Asia/Bangkok');
     <title>jPOS <?php echo $version; ?> ระบบบริหารงานร้านค้าปลีก ส่ง ทุกรูปแบบ</title>
   </head>
 
-  <body onload="initCalendar()">
+  <body onload="initCalendar()" style="background-color: #E6E9ED;">
     <?php
     $current_version = $version;
 

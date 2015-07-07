@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">
       <b class="glyphicon glyphicon-home"></b> 
       บันทึกข้อมูล คลังสินค้า/สาขา
@@ -47,7 +47,7 @@
       <div>
         <label></label>
         <?php echo $form->hiddenField($model, 'branch_id'); ?>
-        <a href="#" onclick="formBranch.submit()" class="btn btn-primary">
+        <a href="#" onclick="formBranch.submit()" class="btn btn-info">
           <b class="glyphicon glyphicon-floppy-disk"></b>
           Save
         </a>

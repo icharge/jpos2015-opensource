@@ -1,10 +1,10 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">
     <b class="glyphicon glyphicon-list-alt"></b>
     ข้อมูลประเภทสินค้า
   </div>
   <div class="panel-body">
-    <a href="index.php?r=Config/GroupProductForm" class="btn btn-primary">
+    <a href="index.php?r=Config/GroupProductForm" class="btn btn-info">
       <i class="glyphicon glyphicon-plus"></i>
       เพิ่มรายการ
     </a>
@@ -23,6 +23,7 @@
             "class" => "pagination"
           )
         ),
+        'itemsCssClass' => 'table table-bordered table-striped',
         'columns' => array(
             array(
                 'name' => 'group_product_code',
@@ -44,9 +45,8 @@
                 'buttons' => array(
                     'edit' => array(
                         'label' => '
-                          <span class="btn btn-success">
-                            <i class="glyphicon glyphicon-align-justify"></i> 
-                            แก้ไข
+                          <span class="btn btn-info">
+                            <i class="glyphicon glyphicon-pencil"></i> 
                           </span>',
                         'url' => 'Yii::app()->createUrl("Config/GroupProductForm", array(
                           "id" => $data->group_product_id
@@ -59,8 +59,7 @@
                     'del' => array(
                         'label' => '
                           <span class="btn btn-danger">
-                            <i class="glyphicon glyphicon-minus-sign"></i> 
-                            ลบ
+                            <i class="glyphicon glyphicon-remove"></i> 
                           </span>',
                         'url' => 'Yii::app()->createUrl("Config/GroupProductDelete", array(
                           "id" => $data->group_product_id
@@ -72,7 +71,7 @@
                     )
                 ),
                 'htmlOptions' => array(
-                    'width' => '170px',
+                    'width' => '110px',
                     'align' => 'center'
                 )
             )

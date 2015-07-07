@@ -156,6 +156,9 @@ class BillSale extends CActiveRecord {
     }
 
     public function getSumPriceByMonthYearGroupProductId($m, $y, $group_product_id) {
+        $m = (int) $m;
+        $y = (int) $y;
+
         $sql = "
           SELECT SUM(bill_sale_detail_price * bill_sale_detail_qty) AS money
           FROM tb_bill_sale_detail
@@ -165,7 +168,7 @@ class BillSale extends CActiveRecord {
             MONTH(bill_sale_created_date) = $m
             AND YEAR(bill_sale_created_date) = $y
             AND bill_sale_status IN('pay', 'credit')
-            AND group_product_id = $group_product_id
+            AND tb_product.group_product_id = $group_product_id
         ";
         $rs = Yii::app()->db->createCommand($sql)->queryRow();
         

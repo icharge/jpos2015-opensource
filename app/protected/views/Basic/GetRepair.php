@@ -185,7 +185,7 @@
     }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รับซ่อมสินค้าจากภายนอก</div>
     <div class="navbar-primary mynav">
         <div class="pull-left">
@@ -201,7 +201,7 @@
             <div style="margin: 3px">
                 <form class="form-inline">
                     <input type="text" name="search" class="form-control" style="width: 200px" />
-                    <a href="#" style="color: white" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="searchGetRepair()">
+                    <a href="#" style="color: white" class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="searchGetRepair()">
                       <i class="glyphicon glyphicon-search"></i>
                        ค้นหา
                     </a>
@@ -232,7 +232,7 @@
                         <div class="input-append">
                             <input type="text" name="user_id" class="form-control" style="width: 100px" />
                             <input type="text" name="user_name" disabled class="disabled form-control" style="width: 200px" />
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="browseUser()">
+                            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="browseUser()">
                                 <i class="glyphicon glyphicon-search"></i>
                                 ...
                             </a>
@@ -240,13 +240,13 @@
                     </td>
 
                     <td><label>วันที่ทำรายการ</label></td>
-                    <td><input type="text" name="repair_created_date" class="form-control calendar" value="<?php echo Util::nowThai(); ?>" style="width: 100px" /></td>
+                    <td><input type="text" name="repair_created_date" class="form-control datepicker" value="<?php echo Util::nowThai(); ?>" style="width: 100px" /></td>
                     <td><label style="width: 50px">สาขา</label></td>
                     <td>
                         <div class="input-append">
                             <input type="hidden" id="hidden_branch_id" name="hidden_branch_id" />
                             <input type="text" name="branch_name" disabled class="disabled form-control" style="width: 200px" />
-                            <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="browseBranch()">
+                            <a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="browseBranch()">
                                 <i class="glyphicon glyphicon-search"></i>
                                 ...
                             </a>
@@ -255,7 +255,7 @@
                 </tr>
                 <tr>
                     <td><label>วันที่เริ่มซ่อม</label></td>
-                    <td><input type="text" name="repair_date" class="form-control calendar" style="width: 100px" /></td>
+                    <td><input type="text" name="repair_date" class="form-control datepicker" style="width: 100px" /></td>
                     <td><label>ปัญหา/อาการ</label></td>
                     <td colspan="4"><input type="text" name="repair_problem" class="form-control" style="width: 415px" /></td>
                 </tr>
@@ -272,7 +272,7 @@
                  <tr>
                     <td><label>ประเภทการซ่อม</label></td>
                     <td>
-                        <span class="alert alert-danger" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
+                        <span class="alert alert-info" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
                             <?php echo CHtml::radioButton('repair_type', true, array('value' => 'internal')); ?> ซ่อมเอง
                             <?php echo CHtml::radioButton('repair_type', false, array('value' => 'center')); ?> ส่งศูนย์
                             <?php echo CHtml::radioButton('repair_type', false, array('value' => 'external')); ?> ส่งซ่อมภายนอก
@@ -280,7 +280,7 @@
                     </td>
                     <td><label>สถานะ</label></td>
                     <td colspan="4">
-                        <span class="alert alert-danger" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
+                        <span class="alert alert-info" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
                             <?php echo CHtml::radioButton('repair_status', false, array('value' => 'wait')); ?> รอการซ่อม
                             <?php echo CHtml::radioButton('repair_status', true, array('value' => 'do')); ?> กำลังดำเนินการ
                             <?php echo CHtml::radioButton('repair_status', false, array('value' => 'complete')); ?> ซ่อมเสร็จแล้ว

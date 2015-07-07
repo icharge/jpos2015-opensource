@@ -26,7 +26,7 @@ class DialogController extends CController {
     $criteria = new CDbCriteria();
 
     if (!empty($_POST)) {
-      $search = $_POST['search'];
+      $search = Util::input($_POST['search']);
 
       $criteria->condition = "
         product_code LIKE(:search)
@@ -67,7 +67,7 @@ class DialogController extends CController {
       ));
 
       if (!empty($_POST)) {
-        $search = $_POST['search'];
+        $search = Util::input($_POST['search']);
         $criteria = new CDbCriteria();
         $criteria->compare('member_code', $search, true, 'OR');
         $criteria->compare('member_name', $search, true, 'OR');
@@ -169,7 +169,7 @@ class DialogController extends CController {
     // update bill_sale
     $bill_sale_ids = Yii::app()->session['bill_sale_ids'];
     foreach ($bill_sale_ids as $id) {
-      $model = BillSale::model()->findByPk($id);
+      $model = BillSale::model()->findByPk((int) $id);
       $model->bill_sale_drop_bill_date = new CDbExpression("NOW()");
       $model->save();
     }
@@ -203,7 +203,7 @@ class DialogController extends CController {
     ));
 
     if (!empty($_POST)) {
-      $search = $_POST['search'];
+      $search = Util::input($_POST['search']);
       $criteria = new CDbCriteria();
       $criteria->compare('user_name', $search, true, 'OR');
       $criteria->compare('user_tel', $search, true, 'OR');
@@ -255,7 +255,7 @@ class DialogController extends CController {
       $params['has_bonus_no'] = Yii::app()->session['has_bonus_no'];
       $params['has_bonus_yes'] = Yii::app()->session['has_bonus_yes'];
       $params['n'] = 1;
-      $params['branch'] = Branch::model()->findByPk($branch_id);
+      $params['branch'] = Branch::model()->findByPk((int) $branch_id);
     }
 
     $this->render('//Report/ReportSalePerDayPdf', $params);

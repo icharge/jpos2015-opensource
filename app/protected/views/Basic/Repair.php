@@ -23,7 +23,7 @@
     });
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">ซ่อมแซมสินค้า</div>
     <div class="panel-body">
         <?php
@@ -36,21 +36,20 @@
         ));
         ?>
         <div>
-            <div class="form-search">
+            <div class="">
                 <label>serial code</label>
                 <?php echo CHtml::textField('search_code', @$search_code, array(
                 		'class' => 'form-control',
                 		'style' => 'width: 200px'
                 )); ?>
-                <a href="#" class="btn btn-primary" onclick="return browseSerial()" data-toggle="modal" data-target="#myModal">
+                <a href="#" class="btn btn-info" onclick="return browseSerial()" data-toggle="modal" data-target="#myModal">
                     <i class="glyphicon glyphicon-search"></i>
-                    ...
                 </a>
-                <a href="#" class="btn btn-primary" onclick="document.form1.submit()">
+                <a href="#" class="btn btn-info" onclick="document.form1.submit()">
                     <i class="glyphicon glyphicon-list-alt"></i>
                     แสดงรายการ
                 </a>
-                <a href="#" id="cmdStartRepair" class="btn btn-success disabled" onclick="startRepair()">
+                <a href="#" id="cmdStartRepair" class="btn btn-info disabled" onclick="startRepair()">
                     <i class="glyphicon glyphicon-cog"></i>
                     รับซ่อม
                 </a>

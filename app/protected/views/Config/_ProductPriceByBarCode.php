@@ -60,7 +60,7 @@
   </table>
 </form>
 
-<a href="#" onclick="saveProductPriceBarcode()" class="btn btn-primary">
+<a href="#" onclick="saveProductPriceBarcode()" class="btn btn-info">
   <b class="glyphicon glyphicon-floppy-disk"></b>
   บันทึก
 </a>

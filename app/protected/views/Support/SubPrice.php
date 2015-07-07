@@ -10,7 +10,7 @@
   }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">กำหนดส่วนลด</div>
   <div class="navbar-primary mynav">
     <div>
@@ -66,6 +66,7 @@
             "class" => "pagination"
           )
         ),
+        'itemsCssClass' => 'table table-bordered table-striped',
       "columns" => array(
         array(
           "name" => "product_code",

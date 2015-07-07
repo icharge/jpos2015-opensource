@@ -43,7 +43,7 @@
   }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">บันทึก รายจ่าย</div>
   <div class="panel-body">
     <?php
@@ -87,7 +87,7 @@
     </div>
     <div>
       <label></label>
-      <input type="submit" value="บันทึก" class="btn btn-primary">
+      <input type="submit" value="บันทึก" class="btn btn-info">
     </div>
     <?php echo $f->hiddenField($pay, 'id'); ?>
     <?php $this->endWidget(); ?>

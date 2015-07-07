@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">
     <b class="glyphicon glyphicon-list-alt"></b>
     บันทึกรายการ ประเภทสินค้า
@@ -47,7 +47,7 @@
     <div>
       <label></label>
       <?php echo $form->hiddenField($model, 'group_product_id'); ?>
-      <a href="#" onclick="formGroupProduct.submit()" class="btn btn-primary">
+      <a href="#" onclick="formGroupProduct.submit()" class="btn btn-info">
         <b class="glyphicon glyphicon-floppy-disk"></b>
         Save
       </a>

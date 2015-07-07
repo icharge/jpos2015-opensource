@@ -11,8 +11,8 @@ class BasicController extends Controller {
   function actionChangeProfile() {
     $this->checkLogin();
 
-    $pk = Yii::app()->request->cookies["user_id"]->value;
-    $model = User::model()->findByPk($pk);
+    $pk = (int) Yii::app()->request->cookies["user_id"]->value;
+    $model = User::model()->findByPk((int) $pk);
 
     if ($_POST != null) {
       $model->attributes = $_POST["User"];
@@ -35,11 +35,11 @@ class BasicController extends Controller {
 
     // SAVE DATA
     if (!empty($_POST)) {
-      $pk = $_POST['BillImport']['bill_import_code'];
+      $pk = Util::input($_POST['BillImport']['bill_import_code']);
 
       if (!empty($pk)) {
         // FIND BILL
-        $model = BillImport::model()->findByPk($pk);
+        $model = BillImport::model()->findByPk((int) $pk);
 
         if (empty($model)) {
           $model = new BillImport();
@@ -47,18 +47,18 @@ class BasicController extends Controller {
       }
 
       // VARIABLE
-      $import_pay_date = $_POST['BillImport']['bill_import_pay_date'];
-      $import_created_date = $_POST['BillImport']['bill_import_created_date'];
+      $import_pay_date = Util::input($_POST['BillImport']['bill_import_pay_date']);
+      $import_created_date = Util::input($_POST['BillImport']['bill_import_created_date']);
 
       $import_pay_date = Util::thaiToMySQLDate($import_pay_date);
       $import_created_date = Util::thaiToMySQLDate($import_created_date);
 
-      $model->attributes = $_POST['BillImport'];
+      $model->attributes = Util::input($_POST['BillImport']);
       $model->bill_import_pay_date = $import_pay_date;
       $model->bill_import_created_date = $import_created_date;
 
       // PAY AND SAVE
-      $import_pay_status = $_POST["BillImport"]["bill_import_pay_status"];
+      $import_pay_status = Util::input($_POST["BillImport"]["bill_import_pay_status"]);
 
       if ($import_pay_status == "pay" && $import_pay_date == "") {
         $model->bill_import_pay_date = new CDbExpression("NOW()");
@@ -81,7 +81,7 @@ class BasicController extends Controller {
 
     // DATA FOR EDIT
     if (!empty($id)) {
-      $model = BillImport::model()->findByPk($id);
+      $model = BillImport::model()->findByPk((int) $id);
 
 			$created_date = $model->bill_import_created_date;
 			$pay_date = $model->bill_import_pay_date;
@@ -101,7 +101,7 @@ class BasicController extends Controller {
   public function actionBillImportDelete($id) {
     $this->checkLogin();
 
-    BillImport::model()->deleteByPk($id);
+    BillImport::model()->deleteByPk((int) $id);
     $this->redirect(array('BillImport'));
   }
 
@@ -113,7 +113,7 @@ class BasicController extends Controller {
 
     // CHECK $bill_import_code
     if (empty($bill_import_code)) {
-      $bill_import_code = $_POST['BillImportDetail']['bill_import_code'];
+      $bill_import_code = Util::input($_POST['BillImportDetail']['bill_import_code']);
     }
 
     // CREATE OBJECT OF BillImport
@@ -123,8 +123,8 @@ class BasicController extends Controller {
 
     // SAVE
     if (!empty($_POST)) {
-      $pk = $_POST['BillImportDetail']['bill_import_detail_id'];
-      $bill_import_code = $_POST['BillImportDetail']['bill_import_code'];
+      $pk = (int) Util::input($_POST['BillImportDetail']['bill_import_detail_id']);
+      $bill_import_code = (int) Util::input($_POST['BillImportDetail']['bill_import_code']);
 
       // CREATE OBJECT OF BillImportDetail
       if (!empty($pk)) {
@@ -134,8 +134,8 @@ class BasicController extends Controller {
       }
 
       // QTY
-      $qty = $_POST['BillImportDetail']['import_bill_detail_product_qty'];
-      $qty_before = $_POST['qty_before'];
+      $qty = Util::input($_POST['BillImportDetail']['import_bill_detail_product_qty']);
+      $qty_before = Util::input($_POST['qty_before']);
       $newQty = 0;
 
       if (!empty($qty_before)) {
@@ -149,7 +149,7 @@ class BasicController extends Controller {
       }
 
       // UPDATE STOCK
-      $codeProduct = $_POST['BillImportDetail']['product_id'];
+      $codeProduct = (int) Util::input($_POST['BillImportDetail']['product_id']);
       $attribute = array();
       $attribute['product_code'] = $codeProduct;
       $product = Product::model()->findByAttributes($attribute);
@@ -172,8 +172,8 @@ class BasicController extends Controller {
 
       // update by barcode_prices
       if (!empty($_POST['qty_sub_stock'])) {
-        $qty_sub_stock = $_POST['qty_sub_stock'];
-        $qty_input = $_POST['BillImportDetail']['import_bill_detail_product_qty'];
+        $qty_sub_stock = Util::input($_POST['qty_sub_stock']);
+        $qty_input = Util::input($_POST['BillImportDetail']['import_bill_detail_product_qty']);
         $qty_total = ($qty_input * $qty_sub_stock);
         $qty_add = $product->product_quantity + $qty_total;
         $qty_add -= $qty_input;
@@ -184,16 +184,16 @@ class BasicController extends Controller {
       $product->save();
 
       // SAVE bill_import_detail
-      $model->attributes = $_POST["BillImportDetail"];
+      $model->attributes = Util::input($_POST["BillImportDetail"]);
       $model->import_bill_detail_qty = ($qty * $product->product_total_per_pack);
       $model->product_id = $product->product_id;
-      $model->import_bill_detail_code = $_POST['BillImportDetail']['product_id'];
+      $model->import_bill_detail_code = Util::input($_POST['BillImportDetail']['product_id']);
       $model->import_bill_detail_qty_per_pack = $product->product_total_per_pack;
 
       // add from barcode_prices
       if (!empty($_POST['qty_sub_stock'])) {
-        $model->import_bill_detail_qty = ($qty * $_POST['qty_sub_stock']);
-        $model->import_bill_detail_qty_per_pack = $_POST['qty_sub_stock'];
+        $model->import_bill_detail_qty = ($qty * Util::input($_POST['qty_sub_stock']));
+        $model->import_bill_detail_qty_per_pack = Util::input($_POST['qty_sub_stock']);
       }
 
       // DEFAULT PRICE
@@ -212,7 +212,7 @@ class BasicController extends Controller {
 
     // DATA FOR EDIT
     if (!empty($id)) {
-      $modelBillImportDetail = BillImportDetail::model()->findByPk($id);
+      $modelBillImportDetail = BillImportDetail::model()->findByPk((int) $id);
     }
 
     // sum
@@ -240,7 +240,7 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     // model
-    $model = BillImportDetail::model()->findByPk($id);
+    $model = BillImportDetail::model()->findByPk((int) $id);
     $qty = $model->import_bill_detail_product_qty;
 
     // update stock
@@ -260,7 +260,7 @@ class BasicController extends Controller {
     }
 
     // delete
-    $model->deleteByPk($id);
+    $model->deleteByPk((int) $id);
 
     $this->redirect(array('BillImportDetail',
         'bill_import_code' => $bill_import_code
@@ -285,8 +285,8 @@ class BasicController extends Controller {
       $size = count($arrayBillSaleDetail);
 
       // ADD bill_sale_detail ITEMS
-      $productCode = $_POST['product_code'];
-      $productQty = $_POST['product_qty'];
+      $productCode = Util::input($_POST['product_code']);
+      $productQty = Util::input($_POST['product_qty']);
       $code = "";
       $price = 0;
       $qty_per_pack = 0;
@@ -295,7 +295,7 @@ class BasicController extends Controller {
         'product_code' => $productCode
       ));
 
-      $sale_condition = $_POST['sale_condition'];
+      $sale_condition = Util::input($_POST['sale_condition']);
 
       if (empty($product)) {
         $product = Product::model()->findByAttributes(array(
@@ -369,12 +369,12 @@ class BasicController extends Controller {
       if (!empty($product)) {
         if (!empty($_POST['hidden_product_codes'])) {
           // second item
-          $hidden_product_codes = $_POST['hidden_product_codes'];
-          $hidden_product_name = $_POST['hidden_product_name'];
-          $hidden_qty_per_pack = $_POST['hidden_qty_per_pack'];
-          $serials = $_POST['serials'];
-          $prices = $_POST['prices'];
-          $qtys = $_POST['qtys'];
+          $hidden_product_codes = Util::input($_POST['hidden_product_codes']);
+          $hidden_product_name = Util::input($_POST['hidden_product_name']);
+          $hidden_qty_per_pack = Util::input($_POST['hidden_qty_per_pack']);
+          $serials = Util::input($_POST['serials']);
+          $prices = Util::input($_POST['prices']);
+          $qtys = Util::input($_POST['qtys']);
 
           $arr = array();
 
@@ -386,48 +386,48 @@ class BasicController extends Controller {
               'product_name' => $hidden_product_name[$i],
               'product_price' => $prices[$i],
               'product_serial_no' => $serials[$i],
-              'product_expire_date' => $_POST['product_expire_date'],
+              'product_expire_date' => Util::input($_POST['product_expire_date']),
               'product_qty_per_pack' => $hidden_qty_per_pack[$i],
-              'sale_status' => $_POST['sale_status'],
-              'sale_condition' => $_POST['sale_condition'],
+              'sale_status' => Util::input($_POST['sale_status']),
+              'sale_condition' => Util::input($_POST['sale_condition']),
               'has_bonus' => 'normal',
-              'bill_sale_created_date' => $_POST['BillSale']['bill_sale_created_date']
+              'bill_sale_created_date' => Util::input($_POST['BillSale']['bill_sale_created_date'])
             );
           }
 
           // add item
           $arr[] = array(
-            'product_qty' => $_POST['product_qty'],
-            'product_code' => $_POST['product_code'],
+            'product_qty' => Util::input($_POST['product_qty']),
+            'product_code' => Util::input($_POST['product_code']),
             'product_name' => $product->product_name,
             'product_price' => $price,
-            'product_serial_no' => $_POST['product_serial_no'],
-            'product_expire_date' => $_POST['product_expire_date'],
+            'product_serial_no' => Util::input($_POST['product_serial_no']),
+            'product_expire_date' => Util::input($_POST['product_expire_date']),
             'product_qty_per_pack' => $qty_per_pack,
-            'sale_status' => $_POST['sale_status'],
-            'sale_condition' => $_POST['sale_condition'],
+            'sale_status' => Util::input($_POST['sale_status']),
+            'sale_condition' => Util::input($_POST['sale_condition']),
             'has_bonus' => 'normal',
-            'bill_sale_created_date' => $_POST['BillSale']['bill_sale_created_date']
+            'bill_sale_created_date' => Util::input($_POST['BillSale']['bill_sale_created_date'])
           );     
         } else { 
           // add item
           $arr[] = array(
-            'product_qty' => $_POST['product_qty'],
-            'product_code' => $_POST['product_code'],
+            'product_qty' => Util::input($_POST['product_qty']),
+            'product_code' => Util::input($_POST['product_code']),
             'product_name' => $product->product_name,
             'product_price' => $price,
-            'product_serial_no' => $_POST['product_serial_no'],
-            'product_expire_date' => $_POST['product_expire_date'],
+            'product_serial_no' => Util::input($_POST['product_serial_no']),
+            'product_expire_date' => Util::input($_POST['product_expire_date']),
             'product_qty_per_pack' => $qty_per_pack,
-            'sale_status' => $_POST['sale_status'],
-            'sale_condition' => $_POST['sale_condition'],
+            'sale_status' => Util::input($_POST['sale_status']),
+            'sale_condition' => Util::input($_POST['sale_condition']),
             'has_bonus' => 'normal',
-            'bill_sale_created_date' => $_POST['BillSale']['bill_sale_created_date']
+            'bill_sale_created_date' => Util::input($_POST['BillSale']['bill_sale_created_date'])
           );
         }
         
         Yii::app()->session['billSaleDetail'] = $arr;
-        Yii::app()->session['billSaleCreatedDate'] = $_POST['BillSale']['bill_sale_created_date'];
+        Yii::app()->session['billSaleCreatedDate'] = Util::input($_POST['BillSale']['bill_sale_created_date']);
 
         $this->redirect(array('Sale'));
       }
@@ -447,7 +447,7 @@ class BasicController extends Controller {
 
     // remove product item from array
     for ($i = 0; $i < count($billSaleDetail); $i++) {
-      if ($i == $index) {
+      if ($i == (int) $index) {
         $billSaleDetail[$i] = null;
       }
     }
@@ -470,12 +470,12 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     $saleTemps = SaleTemp::model()->findAllByAttributes(array(
-      'user_id' => Yii::app()->request->cookies['user_id']->value
+      'user_id' => (int) Yii::app()->request->cookies['user_id']->value
     ));
 
     if (!empty($saleTemps)) {
       // find member_id
-      $member_code = $_POST['txt_member_code'];
+      $member_code = Util::input($_POST['txt_member_code']);
       $member_id = 0;
 
       if (!empty($member_code)) {
@@ -495,7 +495,7 @@ class BasicController extends Controller {
         $saleStatus = 'credit';
       }
       
-			$created_date = $_POST['BillSale']['bill_sale_created_date'];
+			$created_date = Util::input($_POST['BillSale']['bill_sale_created_date']);
       $created_date = Util::thaiToMySQLDate($created_date);
 
       // bill sale
@@ -503,15 +503,15 @@ class BasicController extends Controller {
       $modelBillSale->bill_sale_created_date = $created_date;
       $modelBillSale->bill_sale_status = $saleStatus;
       $modelBillSale->member_id = $member_id;
-      $modelBillSale->bill_sale_vat = $_POST['bill_sale_vat'];
-      $modelBillSale->user_id = Yii::app()->request->cookies['user_id']->value;
-      $modelBillSale->branch_id = $_POST['BillSale']['branch_id'];
-      $modelBillSale->bonus_price = $_POST['bonus_price'];
-      $modelBillSale->out_vat = $_POST['out_vat'];
-      $modelBillSale->vat_type = $_POST['hidden_vat_type'];
-      $modelBillSale->input_money = $_POST['hidden_input'];
-      $modelBillSale->return_money = $_POST['hidden_return_money'];
-      $modelBillSale->total_money = $_POST['hidden_total'];
+      $modelBillSale->bill_sale_vat = Util::input($_POST['bill_sale_vat']);
+      $modelBillSale->user_id = (int) Yii::app()->request->cookies['user_id']->value;
+      $modelBillSale->branch_id = Util::input($_POST['BillSale']['branch_id']);
+      $modelBillSale->bonus_price = Util::input($_POST['bonus_price']);
+      $modelBillSale->out_vat = Util::input($_POST['out_vat']);
+      $modelBillSale->vat_type = Util::input($_POST['hidden_vat_type']);
+      $modelBillSale->input_money = Util::input($_POST['hidden_input']);
+      $modelBillSale->return_money = Util::input($_POST['hidden_return_money']);
+      $modelBillSale->total_money = Util::input($_POST['hidden_total']);
 
       if ($_POST['sale_status'] == 'cash') {
         $_time = date("h:i:s");
@@ -648,7 +648,7 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     // MODEL
-    $modelBillSale = BillSale::model()->findByPk($bill_sale_id);
+    $modelBillSale = BillSale::model()->findByPk((int) $bill_sale_id);
 
     // dataProvider
     $dataProvider = new CActiveDataProvider('BillSaleDetail', array(
@@ -671,22 +671,25 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     if (empty($bill_sale_detail_id)) {
-      $bill_sale_detail_id = $_POST['bill_sale_detail_id'];
+      $bill_sale_detail_id = Util::input($_POST['bill_sale_detail_id']);
     }
 
-    $model = BillSaleDetail::model()->findByPk($bill_sale_detail_id);
+    $model = BillSaleDetail::model()->findByPk((int) $bill_sale_detail_id);
 
     // update bill_sale_detail
     if (!empty($_POST)) {
-      $old_qty = $_POST['old_qty'];
-      $new_qty = $_POST['BillSaleDetail']['bill_sale_detail_qty'];
+      $old_qty = Util::input($_POST['old_qty']);
+      $new_qty = Util::input($_POST['BillSaleDetail']['bill_sale_detail_qty']);
       $model->bill_sale_detail_qty = $new_qty;
       $model->save();
 
       // update stock
       $product_code = $model->bill_sale_detail_barcode;
       $product = Product::model()->find(array(
-          'condition' => "product_code = '$product_code'"
+          'condition' => "product_code = :product_code",
+          'params' => array(
+            'product_code' => $product_code
+          )
       ));
 
       if ($new_qty > $old_qty) {
@@ -713,7 +716,7 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     // OBJECT
-    $billSaleDetail = BillSaleDetail::model()->findByPk($bill_sale_detail_id);
+    $billSaleDetail = BillSaleDetail::model()->findByPk((int) $bill_sale_detail_id);
     $bill_sale_id = $billSaleDetail->bill_id;
 
     $criteria = new CDbCriteria();
@@ -735,7 +738,7 @@ class BasicController extends Controller {
 
     if ($totalRow == 1) {
       // DELETE BILL_SALE
-      BillSale::model()->deleteByPk($bill_sale_id);
+      BillSale::model()->deleteByPk((int) $bill_sale_id);
       $this->redirect(array('ManageBill'));
     }
 
@@ -755,18 +758,18 @@ class BasicController extends Controller {
     // find product
     if (!empty($_POST)) {
       $product = Product::model()->findByAttributes(array(
-          'product_code' => $_POST['Product']['product_code']
+          'product_code' => Util::input($_POST['Product']['product_code'])
       ));
 
       // find by pack_code
       if (empty($product)) {
         $product = Product::model()->findByAttributes(array(
-            'product_pack_barcode' => $_POST['Product']['product_code']
+            'product_pack_barcode' => Util::input($_POST['Product']['product_code'])
         ));
       }
 
       $param['product'] = $product;
-      $param['product_code'] = $_POST['Product']['product_code'];
+      $param['product_code'] = Util::input($_POST['Product']['product_code']);
     }
 
     // render
@@ -782,13 +785,13 @@ class BasicController extends Controller {
 
     if (!empty($_POST)) {
       // get value
-      $from = Util::thaiToMySQLDate($_POST['from']);
-      $to = Util::thaiToMySQLDate($_POST['to']);
-      $bill_status = $_POST['bill_status'];
+      $from = Util::thaiToMySQLDate(Util::input($_POST['from']));
+      $to = Util::thaiToMySQLDate(Util::input($_POST['to']));
+      $bill_status = Util::input($_POST['bill_status']);
 
       // find member id
       $member = Member::model()->findByAttributes(array(
-          'member_code' => $_POST['member_code']
+          'member_code' => Util::input($_POST['member_code'])
       ));
 
       // criteria
@@ -838,9 +841,9 @@ class BasicController extends Controller {
     $params['from'] = $from;
     $params['to'] = $to;
     $params['model'] = $model;
-    $params['member_code'] = @$_POST['member_code'];
-    $params['member_name'] = @$_POST['member_name'];
-    $params['bill_status'] = @$_POST['bill_status'];
+    $params['member_code'] = @Util::input($_POST['member_code']);
+    $params['member_name'] = @Util::input($_POST['member_name']);
+    $params['bill_status'] = @Util::input($_POST['bill_status']);
 
     $this->render('//Basic/BillDrop', $params);
   }
@@ -849,8 +852,8 @@ class BasicController extends Controller {
   public function actionBillDropTemp() {
     $this->checkLogin();
 
-    Yii::app()->session['hidden_member_code'] = $_POST['hidden_member_code'];
-    Yii::app()->session['bill_sale_ids'] = $_POST['bill_sale_id'];
+    Yii::app()->session['hidden_member_code'] = Util::input($_POST['hidden_member_code']);
+    Yii::app()->session['bill_sale_ids'] = (int) Util::input($_POST['bill_sale_id']);
 
     echo 'complete';
   }
@@ -859,10 +862,10 @@ class BasicController extends Controller {
   public function actionBillDropGet() {
     $this->checkLogin();
 
-    $bill_sale_ids = $_POST['bill_sale_id'];
+    $bill_sale_ids = (int) Util::input($_POST['bill_sale_id']);
 
     foreach ($bill_sale_ids as $id) {
-      $model = BillSale::model()->findByPk($id);
+      $model = BillSale::model()->findByPk((int) $id);
       $model->bill_sale_pay_date = new CDbExpression("NOW()");
       $model->bill_sale_status = 'pay';
       $model->save();
@@ -875,10 +878,10 @@ class BasicController extends Controller {
   public function actionBillDropCancel() {
     $this->checkLogin();
 
-    $bill_sale_ids = $_POST['bill_sale_id'];
+    $bill_sale_ids = (int) Util::input($_POST['bill_sale_id']);
 
     foreach ($bill_sale_ids as $id) {
-      $model = BillSale::model()->findByPk($id);
+      $model = BillSale::model()->findByPk((int) $id);
       $model->bill_sale_pay_date = null;
       $model->bill_sale_drop_bill_date = null;
       $model->bill_sale_status = 'credit';
@@ -892,7 +895,7 @@ class BasicController extends Controller {
   public function actionBillDropDelete() {
     $this->checkLogin();
 
-    $bill_sale_ids = $_POST['bill_sale_id'];
+    $bill_sale_ids = (int) Util::input($_POST['bill_sale_id']);
 
     foreach ($bill_sale_ids as $id) {
       $billSaleDetails = BillSaleDetail::model()->findAllByAttributes(array(
@@ -903,7 +906,7 @@ class BasicController extends Controller {
 	     	$billSaleDetail->delete();
       }
 
-      BillSale::model()->deleteByPk($id);
+      BillSale::model()->deleteByPk((int) $id);
     }
 
     echo true;
@@ -918,13 +921,13 @@ class BasicController extends Controller {
 
     // search
     if (!empty($_POST)) {
-			$barcode = $_POST['BillSaleDetail']['bill_sale_detail_barcode'];
+			$barcode = Util::input($_POST['BillSaleDetail']['bill_sale_detail_barcode']);
 
       if (empty($_POST['product_id'])) {
         // find data
         $billSaleDetail = BillSaleDetail::model()->findByAttributes(array(
             'bill_sale_detail_barcode' => $barcode,
-            'bill_id' => $_POST['BillSaleDetail']['bill_id']
+            'bill_id' => (int) Util::input($_POST['BillSaleDetail']['bill_id'])
         ));
         $model->_attributes = $_POST['BillSaleDetail'];
 
@@ -944,7 +947,7 @@ class BasicController extends Controller {
         // remove from bill
         BillSaleDetail::model()->deleteAllByAttributes(array(
             'bill_sale_detail_barcode' => $barcode,
-            'bill_id' => $_POST['BillSaleDetail']['bill_id']
+            'bill_id' => (int) Util::input($_POST['BillSaleDetail']['bill_id'])
         ));
 
         // update stock and redirect
@@ -970,10 +973,10 @@ class BasicController extends Controller {
 
     if (!empty($_POST)) {
       // search
-      $search = $_POST['search_code'];
+      $search = Util::input($_POST['search_code']);
 
       if (empty($search)) {
-        $search = $_GET['serial_code'];
+        $search = Util::input($_GET['serial_code']);
       }
 
       // productSerial
@@ -992,7 +995,7 @@ class BasicController extends Controller {
 
       // repair history
       $criteria = new CDbCriteria();
-      $criteria->compare('serial_no', $_POST['search_code']);
+      $criteria->compare('serial_no', Util::input($_POST['search_code']));
       $criteria->order = 'repair_id DESC';
 
       $repairs = new CActiveDataProvider('Repair');
@@ -1019,7 +1022,7 @@ class BasicController extends Controller {
 
     // repair
     if (!empty($_GET['repair_id'])) {
-      $repair = Repair::model()->findByPk($_GET['repair_id']);
+      $repair = Repair::model()->findByPk((int) $_GET['repair_id']);
     } else {
       $repair = new Repair();
     }
@@ -1036,7 +1039,7 @@ class BasicController extends Controller {
 
     if (!empty($_POST)) {
       // serail_code
-      $serial_code = $_POST['Repair']['serial_no'];
+      $serial_code = Util::input($_POST['Repair']['serial_no']);
 
       // save
       $state_new = true;
@@ -1045,14 +1048,14 @@ class BasicController extends Controller {
         $repair = new Repair();
       } else {
         $state_new = false;
-        $repair = Repair::model()->findByPk($_POST['Repair']['repair_id']);
+        $repair = Repair::model()->findByPk((int) Util::input($_POST['Repair']['repair_id']));
       }
 
       $repair->_attributes = $_POST['Repair'];
-      $repair->user_id = $_POST['user_id'];
-      $repair->repair_created_date = Util::thaiToMySQLDate($_POST['repair_created_date']);
-      $repair->branch_id = $_POST['hidden_branch_id'];
-      $repair->repair_date = Util::thaiToMySQLDate($_POST['Repair']['repair_date']);
+      $repair->user_id = (int) Util::input($_POST['user_id']);
+      $repair->repair_created_date = Util::thaiToMySQLDate(Util::input($_POST['repair_created_date']));
+      $repair->branch_id = Util::input($_POST['hidden_branch_id']);
+      $repair->repair_date = Util::thaiToMySQLDate(Util::input($_POST['Repair']['repair_date']));
 
       if ($repair->save()) {
         if ($state_new) {
@@ -1067,7 +1070,7 @@ class BasicController extends Controller {
   function actionRepairView($repair_id) {
     $this->checkLogin();
 
-    $serial_code = $_GET['serial_code'];
+    $serial_code = Util::input($_GET['serial_code']);
 
     // product serial
     $productSerial = Yii::app()->db->createCommand()
@@ -1080,7 +1083,7 @@ class BasicController extends Controller {
 
     // repair
     if (!empty($_GET['repair_id'])) {
-      $repair = Repair::model()->findByPk($_GET['repair_id']);
+      $repair = Repair::model()->findByPk((int) $_GET['repair_id']);
     } else {
       $repair = new Repair();
     }
@@ -1106,24 +1109,24 @@ class BasicController extends Controller {
         $quotation = new Quotation();
         $quotation->created_at = new CDbExpression("NOW()");
       } else {
-        $quotation = Quotation::model()->findByPk($quotation_id);
+        $quotation = Quotation::model()->findByPk((int) $quotation_id);
       }
 
-      $quotation->customer_name = $_POST['customer_name'];
-      $quotation->customer_address = $_POST['customer_address'];
-      $quotation->customer_tel = $_POST['customer_tel'];
-      $quotation->customer_fax = $_POST['customer_fax'];
-      $quotation->customer_tax = $_POST['customer_tax'];
-      $quotation->quotation_day = $_POST['quotation_day'];
-      $quotation->quotation_send_day = $_POST['quotation_send_day'];
-      $quotation->quotation_pay = $_POST['quotation_pay'];
+      $quotation->customer_name = Util::input($_POST['customer_name']);
+      $quotation->customer_address = Util::input($_POST['customer_address']);
+      $quotation->customer_tel = Util::input($_POST['customer_tel']);
+      $quotation->customer_fax = Util::input($_POST['customer_fax']);
+      $quotation->customer_tax = Util::input($_POST['customer_tax']);
+      $quotation->quotation_day = Util::input($_POST['quotation_day']);
+      $quotation->quotation_send_day = Util::input($_POST['quotation_send_day']);
+      $quotation->quotation_pay = Util::input($_POST['quotation_pay']);
         
       $quotation->user_id = Yii::app()->request->cookies["user_id"]->value;
-      $quotation->vat = $_POST['vat'];
+      $quotation->vat = Util::input($_POST['vat']);
 
       if ($quotation->save()) {
         // INSERT TO quotation_details
-        $barcodes = $_POST['barcode_hidden'];
+        $barcodes = Util::input($_POST['barcode_hidden']);
 
         // clear quotation detail
         if (!empty($quotation_id)) {
@@ -1136,11 +1139,11 @@ class BasicController extends Controller {
         for ($i = 0; $i < count($barcodes); $i++) {
           $quotationDetail = new QuotationDetail();
           $quotationDetail->quotation_id = $quotation->id;
-          $quotationDetail->barcode = $_POST['barcode_hidden'][$i];
-          $quotationDetail->old_price = str_replace(",", "", $_POST['old_price'][$i]);
-          $quotationDetail->qty = str_replace(",", "", $_POST['qty'][$i]);
-          $quotationDetail->sub = str_replace(",", "", $_POST['sub'][$i]);
-          $quotationDetail->sale_price = str_replace(",", "", $_POST['sale_price'][$i]);
+          $quotationDetail->barcode = Util::input($_POST['barcode_hidden'][$i]);
+          $quotationDetail->old_price = str_replace(",", "", Util::input($_POST['old_price'][$i]));
+          $quotationDetail->qty = str_replace(",", "", Util::input($_POST['qty'][$i]));
+          $quotationDetail->sub = str_replace(",", "", Util::input($_POST['sub'][$i]));
+          $quotationDetail->sale_price = str_replace(",", "", Util::input($_POST['sale_price'][$i]));
           $quotationDetail->save();
         }
 
@@ -1158,16 +1161,16 @@ class BasicController extends Controller {
 
     $quotation_id = Yii::app()->session['current_quotation_id'];
 
-    $quotation = Quotation::model()->findByPk($quotation_id);
+    $quotation = Quotation::model()->findByPk((int) $quotation_id);
     
     $quotationDetails = QuotationDetail::model()->findAllByAttributes(array(
       "quotation_id" => $quotation_id
     ));
 
     $org = Organization::model()->find();
-    $user_id = Yii::app()->request->cookies["user_id"]->value;
+    $user_id = (int) Yii::app()->request->cookies["user_id"]->value;
 
-    $user = User::model()->findByPk($user_id);
+    $user = User::model()->findByPk((int) $user_id);
 
     $this->renderPartial("//Basic/QuotationBill", array(
       "quotation" => $quotation,
@@ -1191,7 +1194,7 @@ class BasicController extends Controller {
   }
 
   public function actionFindQuotationById($id) {    
-    $quotation = Quotation::model()->findByPk($id);
+    $quotation = Quotation::model()->findByPk((int) $id);
     echo CJSON::encode($quotation);
   }
 
@@ -1223,12 +1226,12 @@ class BasicController extends Controller {
 
     if (!empty($_POST)) {
       $quotationDetail = new QuotationDetail();
-      $quotationDetail->quotation_id = $_POST['quotation_id'];
-      $quotationDetail->barcode = $_POST['barcode'];
-      $quotationDetail->old_price = str_replace(",", "", $_POST['old_price']);
-      $quotationDetail->qty = str_replace(",", "", $_POST['qty']);
-      $quotationDetail->sub = str_replace(",", "", $_POST['sub']);
-      $quotationDetail->sale_price = str_replace(",", "", $_POST['sale_price']);
+      $quotationDetail->quotation_id = (int) Util::input($_POST['quotation_id']);
+      $quotationDetail->barcode = Util::input($_POST['barcode']);
+      $quotationDetail->old_price = str_replace(",", "", Util::input($_POST['old_price']));
+      $quotationDetail->qty = str_replace(",", "", Util::input($_POST['qty']));
+      $quotationDetail->sub = str_replace(",", "", Util::input($_POST['sub']));
+      $quotationDetail->sale_price = str_replace(",", "", Util::input($_POST['sale_price']));
       $quotationDetail->save();
 
       echo $quotationDetail->id;
@@ -1237,7 +1240,7 @@ class BasicController extends Controller {
 
   public function actionQuotationDetailDelete($id) {
     $this->checkLogin();
-    QuotationDetail::model()->deleteByPk($id);
+    QuotationDetail::model()->deleteByPk((int) $id);
   }
 
   public function actionClearBillSale() {
@@ -1281,8 +1284,6 @@ class BasicController extends Controller {
 
   public function actionBackgroundDelete($id) {
     $this->checkLogin();
-
-        
   }
 
   public function actionGetRepair() {
@@ -1294,29 +1295,29 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     if (!empty($_POST)) {
-      $repair_id = $_POST['repair_id'];
+      $repair_id = (int) Util::input($_POST['repair_id']);
 
       if (empty($repair_id)) {
         $repair = new Repair();
       } else {
-        $repair = Repair::model()->findByPk($repair_id);
+        $repair = Repair::model()->findByPk((int) $repair_id);
       }
 
-      $repair->user_id = $_POST['user_id'];
-      $repair->branch_id = $_POST['hidden_branch_id'];
-      $repair->product_code = $_POST['product_code'];
-      $repair->repair_date = Util::thaiToMySQLDate($_POST['repair_date']);
-      $repair->repair_problem = $_POST['repair_problem'];
-      $repair->repair_price = $_POST['repair_price'];
-      $repair->repair_type = $_POST['repair_type'];
-      $repair->repair_original = $_POST['repair_original'];
-      $repair->repair_detail = $_POST['repair_detail'];
-      $repair->repair_created_date = Util::thaiToMySQLDate($_POST['repair_created_date']);
-      $repair->repair_status = $_POST['repair_status'];
+      $repair->user_id = (int) Util::input($_POST['user_id']);
+      $repair->branch_id = (int) Util::input($_POST['hidden_branch_id']);
+      $repair->product_code = Util::input($_POST['product_code']);
+      $repair->repair_date = Util::thaiToMySQLDate(Util::input($_POST['repair_date']));
+      $repair->repair_problem = Util::input($_POST['repair_problem']);
+      $repair->repair_price = Util::input($_POST['repair_price']);
+      $repair->repair_type = Util::input($_POST['repair_type']);
+      $repair->repair_original = Util::input($_POST['repair_original']);
+      $repair->repair_detail = Util::input($_POST['repair_detail']);
+      $repair->repair_created_date = Util::thaiToMySQLDate(Util::input($_POST['repair_created_date']));
+      $repair->repair_status = Util::input($_POST['repair_status']);
       $repair->repair_group = 'external';
-      $repair->repair_tel = $_POST['repair_tel'];
-      $repair->repair_name = $_POST['repair_name'];
-      $repair->repair_product_name = $_POST['repair_product_name'];
+      $repair->repair_tel = Util::input($_POST['repair_tel']);
+      $repair->repair_name = Util::input($_POST['repair_name']);
+      $repair->repair_product_name = Util::input($_POST['repair_product_name']);
 
       if ($repair->save()) {
         echo CJSON::encode($repair);
@@ -1328,8 +1329,8 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     if (!empty($_POST)) {
-      $repair_id = $_POST['repair_id'];
-      $repair = Repair::model()->findByPk($repair_id);
+      $repair_id = Util::input($_POST['repair_id']);
+      $repair = Repair::model()->findByPk((int) $repair_id);
 
       if (!empty($repair)) {
         $arr = array();
@@ -1363,9 +1364,9 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     if (!empty($_POST)) {
-      $repair_id = $_POST['repair_id'];
+      $repair_id = Util::input($_POST['repair_id']);
 
-      Repair::model()->deleteByPk($repair_id);
+      Repair::model()->deleteByPk((int) $repair_id);
       echo 'success';
     }
   }
@@ -1374,24 +1375,24 @@ class BasicController extends Controller {
     $this->checkLogin();
 
     if (!empty($_POST)) {
-      $repair_id = $_POST['repair_id'];
-      $repair = Repair::model()->findByPk($repair_id);
+      $repair_id = Util::input($_POST['repair_id']);
+      $repair = Repair::model()->findByPk((int) $repair_id);
 
-      $repair->user_id = $_POST['user_id'];
-      $repair->branch_id = $_POST['hidden_branch_id'];
-      $repair->product_code = $_POST['product_code'];
-      $repair->repair_date = Util::thaiToMySQLDate($_POST['repair_date']);
-      $repair->repair_problem = $_POST['repair_problem'];
-      $repair->repair_price = $_POST['repair_price'];
-      $repair->repair_type = $_POST['repair_type'];
-      $repair->repair_original = $_POST['repair_original'];
-      $repair->repair_detail = $_POST['repair_detail'];
-      $repair->repair_created_date = Util::thaiToMySQLDate($_POST['repair_created_date']);
-      $repair->repair_status = $_POST['repair_status'];
+      $repair->user_id = (int) Util::input($_POST['user_id']);
+      $repair->branch_id = (int) Util::input($_POST['hidden_branch_id']);
+      $repair->product_code = Util::input($_POST['product_code']);
+      $repair->repair_date = Util::thaiToMySQLDate(Util::input($_POST['repair_date']));
+      $repair->repair_problem = Util::input($_POST['repair_problem']);
+      $repair->repair_price = Util::input($_POST['repair_price']);
+      $repair->repair_type = Util::input($_POST['repair_type']);
+      $repair->repair_original = Util::input($_POST['repair_original']);
+      $repair->repair_detail = Util::input($_POST['repair_detail']);
+      $repair->repair_created_date = Util::thaiToMySQLDate(Util::input($_POST['repair_created_date']));
+      $repair->repair_status = Util::input($_POST['repair_status']);
       $repair->repair_group = 'external';
-      $repair->repair_tel = $_POST['repair_tel'];
-      $repair->repair_name = $_POST['repair_name'];
-      $repair->repair_product_name = $_POST['repair_product_name'];
+      $repair->repair_tel = Util::input($_POST['repair_tel']);
+      $repair->repair_name = Util::input($_POST['repair_name']);
+      $repair->repair_product_name = Util::input($_POST['repair_product_name']);
       $repair->repair_end_date = new CDbExpression('NOW()');
 
       if ($repair->save()) {
@@ -1424,6 +1425,51 @@ class BasicController extends Controller {
         'print' => $print
       ));
     }
+  }
+
+  public function actionSaleMobile() {
+    $this->checkLogin();
+
+    $user_id = Yii::app()->request->cookies['user_id']->value;
+
+    if (!empty($_POST)) {
+      $barcode = Util::input($_POST['barcode']);
+
+      $info = Product::getInfoByBarcode($barcode);
+      $user = User::model()->findByPk((int) $user_id);
+
+      $saleTemp = new SaleTemp();
+      $saleTemp->barcode = $barcode;
+      $saleTemp->serial = Util::input($_POST['serial']);
+      $saleTemp->qty = 1;
+      $saleTemp->qty_per_pack = $info['qty_per_pack'];
+      $saleTemp->price = $info['price'];
+      $saleTemp->user_id = $user_id;
+      $saleTemp->branch_id = $user->branch_id;
+      $saleTemp->pk_temp = rand(1000, 10000);
+      $saleTemp->created_at = new CDbExpression('NOW()');
+      $saleTemp->old_price = $info['old_price'];
+      $saleTemp->sale_type = 'mobile';
+      $saleTemp->name = $info['name'];
+
+      if ($saleTemp->save()) {
+        $this->redirect(array('SaleMobile'));
+      }
+    }
+
+    $saleTemps = SaleTemp::model()->findAll(array(
+      'condition' => 'user_id = :user_id AND sale_type = :sale_type',
+      'params' => array(
+        'user_id' => $user_id,
+        'sale_type' => 'mobile'
+      ),
+      'order' => 'created_at DESC'
+    ));
+
+    $this->renderPartial('//Basic/SaleMobile', array(
+      'saleTemps' => $saleTemps,
+      'sum' => 0
+    ));
   }
 
 }

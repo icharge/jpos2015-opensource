@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">จัดการบิล [แก้ไข, ยกเลิก]</div>
     <div class="panel-body">
         <div style="text-align: right">
@@ -21,6 +21,7 @@
                 "class" => "pagination"
               )
             ),
+            'itemsCssClass' => 'table table-bordered table-striped',
             'columns' => array(
                 array(
                     'name' => 'bill_sale_id',

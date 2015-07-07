@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">เพิ่มรายการ : ประเภทรายจ่าย</div>
   <div class="panel-body">
     <?php 
@@ -23,7 +23,7 @@
     </div>
     <div>
       <label></label>
-      <input type="submit" class="btn btn-primary" value="บันทึก">
+      <input type="submit" class="btn btn-info" value="บันทึก">
     </div>
     <?php echo $f->hiddenField($payType, 'id'); ?>
     <?php $this->endWidget(); ?>

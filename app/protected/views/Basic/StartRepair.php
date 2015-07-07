@@ -30,7 +30,7 @@
     });
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">
         บันทึกการรับซ่อมสินค้าหมายเลข Serial: 
         <?php echo $productSerial["serial_no"]; ?>
@@ -93,9 +93,8 @@
                     <div class="input-append">
                         <input type="text" name="user_id" class="form-control" value="<?php echo @$repair->user_id; ?>" style="width: 100px" />
                         <input type="text" name="user_name" value="<?php echo @$repair->user->user_name; ?>" disabled class="disabled form-control" style="width: 200px" />
-                        <a href="#" class="btn btn-primary" onclick="return browseUser()">
+                        <a href="#" class="btn btn-info" onclick="return browseUser()">
                             <i class="glyphicon glyphicon-search"></i>
-                            ...
                         </a>
                     </div>
                 </td>
@@ -110,9 +109,8 @@
                     <div class="input-append">
                         <input type="hidden" id="hidden_branch_id" name="hidden_branch_id" value="<?php echo @$repair->branch_id; ?>" />
                         <input type="text" name="branch_name" value="<?php echo @$repair->branch->branch_name; ?>" disabled class="disabled form-control" style="width: 200px" />
-                        <a href="#" class="btn btn-primary" onclick="return browseBranch()">
+                        <a href="#" class="btn btn-info" onclick="return browseBranch()">
                             <i class="glyphicon glyphicon-search"></i>
-                            ...
                         </a>
                     </div>
                 </td>
@@ -164,7 +162,7 @@
             <tr>
                 <td><?php echo $form->labelEx($repair, 'repair_type'); ?></td>
                 <td>
-                    <span class="alert alert-danger" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
+                    <span class="alert alert-info" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
                         <?php echo CHtml::radioButton('Repair[repair_type]', true, array('value' => 'internal')); ?> ซ่อมเอง
                         <?php echo CHtml::radioButton('Repair[repair_type]', false, array('value' => 'center')); ?> ส่งศูนย์
                         <?php echo CHtml::radioButton('Repair[repair_type]', false, array('value' => 'external')); ?> ส่งซ่อมภายนอก
@@ -173,7 +171,7 @@
 
                 <td><?php echo $form->labelEx($repair, 'repair_status'); ?></td>
                 <td colspan="4">
-                    <span class="alert alert-danger" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
+                    <span class="alert alert-info" style="display: inline-block; padding-top: 8px; padding-bottom: 8px">
                         <?php echo CHtml::radioButton('Repair[repair_status]', false, array('value' => 'wait')); ?> รอการซ่อม
                         <?php echo CHtml::radioButton('Repair[repair_status]', true, array('value' => 'do')); ?> กำลังดำเนินการ
                         <?php echo CHtml::radioButton('Repair[repair_status]', false, array('value' => 'complete')); ?> ซ่อมเสร็จแล้ว
@@ -183,14 +181,16 @@
             <tr>
                 <td></td>
                 <td>
-                    <a class="btn btn-primary">
+                    <a class="btn btn-info">
                         <i class="glyphicon glyphicon-ok"></i>
                         บันทึกรายการ
                     </a>
-                    <a class="btn btn-success">
+                    <!--
+                    <a class="btn btn-info">
                         <i class="glyphicon glyphicon-print"></i>
                         พิมพ์ใบรับซ่อม
                     </a>
+                    -->
                 </td>
             </tr>
         </table>

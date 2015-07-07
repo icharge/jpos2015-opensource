@@ -516,6 +516,27 @@ class HelpController extends Controller {
     } catch (Exception $e) {
 
     }
+
+    try {
+      $sql = "ALTER TABLE tb_member ADD tax_code VARCHAR(20) NULL COMMENT 'เลขผู้เสียภาษี'";
+      Yii::app()->db->createCommand($sql)->execute();
+    } catch (Exception $e) {
+
+    }
+
+    try {
+      $sql = "ALTER TABLE sale_temp ADD sale_type ENUM('sale', 'mobile') DEFAULT 'sale' NOT NULL COMMENT 'รูปแบบการขาย'";
+      Yii::app()->db->createCommand($sql)->execute();
+    } catch (Exception $e) {
+
+    }
+
+    try {
+      $sql = "ALTER TABLE tb_bill_sale ADD sale_type ENUM('sale', 'mobile') DEFAULT 'sale' NOT NULL COMMENT 'รูปแบบการขาย'";
+      Yii::app()->db->createCommand($sql)->execute();
+    } catch (Exception $e) {
+
+    }
   }
 
   public function actionUpToNewVersion() {

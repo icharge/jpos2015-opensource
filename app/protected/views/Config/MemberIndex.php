@@ -1,7 +1,7 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">ข้อมูลสมาชิกร้าน</div>
   <div class="panel-body">
-    <a href="index.php?r=Config/MemberForm" class="btn btn-primary">
+    <a href="index.php?r=Config/MemberForm" class="btn btn-info">
       <b class="glyphicon glyphicon-plus"></b>
       เพิ่มรายการ
     </a>
@@ -20,8 +20,10 @@
             "class" => "pagination"
           )
         ),
+        'itemsCssClass' => 'table table-bordered table-striped',
         'columns' => array(
             'member_code',
+            'tax_code',
             'member_name',
             'member_tel',
             'member_address',
@@ -33,9 +35,8 @@
                 'buttons' => array(
                     'edit' => array(
                         'label' => '
-                          <span class="btn btn-success">
-                            <b class="glyphicon glyphicon-align-justify"></b>
-                            แก้ไข
+                          <span class="btn btn-info">
+                            <b class="glyphicon glyphicon-pencil"></b>
                           </span>',
                         'url' => 'Yii::app()->createUrl("Config/MemberForm", array(
 													"id" => $data->member_id
@@ -44,8 +45,7 @@
                     'del' => array(
                         'label' => '
                           <span class="btn btn-danger">
-                            <b class="glyphicon glyphicon-minus-sign"></b>
-                            ลบ
+                            <b class="glyphicon glyphicon-remove"></b>
                           </span>',
                         'url' => 'Yii::app()->createUrl("Config/MemberDelete", array(
 													
@@ -57,7 +57,7 @@
                 ),
                 'htmlOptions' => array(
                     'align' => 'center',
-                    'width' => '170px'
+                    'width' => '110px'
                 )
             )
         )

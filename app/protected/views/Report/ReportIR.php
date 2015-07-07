@@ -1,23 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<style type="text/css">
-    body, table {
-        font-family: Tahoma;
-        font-size: 15px;
-    }
-    table {
-        border-collapse: collapse;
-    }
-    table tr th, td {
-        border: #999 solid 1px;
-        padding: 5px;
-    }
-    table tr th{
-        background-color: #ddd;
-    }
-</style>
-
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานเจ้าหนี้</div>
 
     <div class="panel-body">
@@ -50,6 +33,7 @@
                 "class" => "pagination"
               )
             ),
+            'itemsCssClass' => 'table table-bordered table-striped',
             'summaryText' => "แสดงข้อมูลตั้งแต่ {start} ถึง {end} จากข้อมูล {count}",
             'pager' => array('header' => ''),
             'columns' => array(

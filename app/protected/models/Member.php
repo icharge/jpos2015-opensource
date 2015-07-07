@@ -18,7 +18,8 @@ class Member extends CActiveRecord {
         'member_tel' => 'เบอร์โทร',
         'member_address' => 'ที่อยู่',
         'member_created_date' => 'วันที่บันทึก',
-				'branch_id' => 'สาขาที่สมัคร'
+				'branch_id' => 'สาขาที่สมัคร',
+        'tax_code' => 'เลขผู้เสียภาษี'
     );
   }
 

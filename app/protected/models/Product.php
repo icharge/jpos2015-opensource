@@ -106,4 +106,26 @@ class Product extends CActiveRecord {
     ));
   }
 
+  public static function getInfoByBarcode($barcode) {
+    $product = Product::model()->findByAttributes(array(
+      'product_code' => $barcode
+    ));
+
+    $info = array();
+
+    if (!empty($product)) {
+      $info['price'] = $product->product_price;
+      $info['qty_per_pack'] = $product->product_total_per_pack;
+      $info['old_price'] = $product->product_price_buy;
+      $info['name'] = $product->product_name;
+    } else {
+      $info['price'] = 0;
+      $info['qty_per_pack'] = 0;
+      $info['old_price'] = 0;
+      $info['name'] = '';
+    }
+
+    return $info;
+  }
+
 }

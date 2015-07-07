@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รับเข้าสินค้า</div>
     <div class="panel-body">
         <?php
@@ -22,7 +22,7 @@
 					<!-- bill_import_created_date -->
 					<?php echo $form->labelEx($model, 'bill_import_created_date'); ?>
 					<?php echo $form->textField($model, 'bill_import_created_date', array(
-						'class' => 'form-control calendar',
+						'class' => 'form-control datepicker',
 						'style' => 'width: 200px'
 					)); ?>
 				</div>
@@ -79,7 +79,7 @@
 				<div>
 					<?php echo $form->labelEx($model, 'bill_import_pay_date'); ?>
 					<?php echo $form->textField($model, 'bill_import_pay_date', array(
-						'class' => 'form-control calendar',
+						'class' => 'form-control datepicker',
 						'style' => 'width: 200px'
 					)); ?>
 				</div>
@@ -96,7 +96,7 @@
 				<!-- BUTTON -->
 				<div>
 					<label></label>
-					<a href="#" class="btn btn-primary" onclick="formBillImport.submit()">
+					<a href="#" class="btn btn-info" onclick="formBillImport.submit()">
 						<b class="glyphicon glyphicon-floppy-disk"></b>
 						SAVE
 					</a>
@@ -119,6 +119,7 @@
                 "class" => "pagination"
               )
             ),
+            'itemsCssClass' => 'table table-bordered table-striped',
             'columns' => array(
                 array(
                     'name' => 'bill_import_code',
@@ -170,7 +171,7 @@
                     'buttons' => array(
                         'edit' => array(
                             'label' => '
-															<span class="btn btn-success">
+															<span class="btn btn-info">
 																<b class="glyphicon glyphicon-pencil"></b>
 															</span>',
                             'url' => 'Yii::app()->createUrl("Basic/BillImport", array(
@@ -192,7 +193,7 @@
                     ),
                     'htmlOptions' => array(
                         'align' => 'center',
-                        'width' => '100px'
+                        'width' => '110px'
                     )
                 )
             )

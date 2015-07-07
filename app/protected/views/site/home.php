@@ -17,7 +17,7 @@
 
 <div class="pull-right">
   <div style="margin-right: 15px; margin-top: 5px">
-    <a href="#" onclick="browseFile()" class="btn btn-primary" style="margin-bottom: 10px">
+    <a href="#" onclick="browseFile()" class="btn btn-danger" style="margin-bottom: 10px">
       <i class="glyphicon glyphicon-plus"></i>
       เพิ่มภาพใหม่
     </a>

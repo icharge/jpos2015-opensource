@@ -19,22 +19,22 @@ class ReportController extends Controller {
 
         if (!empty($_POST)) {
           // data
-          $sale_condition_cash = $_POST['sale_condition_cash'];
-          $sale_condition_credit = $_POST['sale_condition_credit'];
+          $sale_condition_cash = Util::input($_POST['sale_condition_cash']);
+          $sale_condition_credit = Util::input($_POST['sale_condition_credit']);
 
           $has_bonus_yes = "";
 
             if (!empty($_POST['has_bonus_yes'])) {
-                $has_bonus_yes = $_POST['has_bonus_yes'];
+                $has_bonus_yes = Util::input($_POST['has_bonus_yes']);
             }
 
             $has_bonus_no = "";
 
             if (!empty($_POST['has_bonus_no'])) {
-             $has_bonus_no = $_POST['has_bonus_no'];
+             $has_bonus_no = Util::input($_POST['has_bonus_no']);
             }
 
-          $branch_id = $_POST['branch_id'];
+          $branch_id = Util::input($_POST['branch_id']);
 
           // checked
           if (!empty($sale_condition_cash)) {
@@ -83,22 +83,19 @@ class ReportController extends Controller {
           }
 
           // Date
-            $date_find = Util::thaiToMySQLDate($_REQUEST['date_find']);
-            $date_end_sql = Util::thaiToMySQLDate($_POST['date_end']);
+            $date_find = $_POST['date_find'];
+            $date_end_sql = $_POST['date_end'];
             $date_end = $_POST['date_end'];
 
-            $date = explode('-', $date_find);
-            $y = $date[0];
-            $m = $date[1];
-            $d = $date[2];
+            $date = explode('/', $date_find);
+            $y = (int) $date[2];
+            $m = (int) $date[1];
+            $d = (int) $date[0];
 
-            $date_end_arr = explode("-", $date_end_sql);
-            $y_end = $date_end_arr[0];
-            $m_end = $date_end_arr[1];
-            $d_end = $date_end_arr[2];
-
-            $d = ($d * 1);
-            $d_end = ($d_end * 1);
+            $date_end_arr = explode("/", $date_end_sql);
+            $y_end = (int) $date_end_arr[2];
+            $m_end = (int) $date_end_arr[1];
+            $d_end = (int) $date_end_arr[0];
 
             // SQL Command
             $sql = "
@@ -115,9 +112,9 @@ class ReportController extends Controller {
                 )
                 AND 
                 (
-                  YEAR(tb_bill_sale.bill_sale_created_date) <= $y_end
-                  AND MONTH(tb_bill_sale.bill_sale_created_date) <= $m_end
-                  AND DAY(tb_bill_sale.bill_sale_created_date) <= $d_end
+                  YEAR(bill_sale_created_date) <= $y_end
+                  AND MONTH(bill_sale_created_date) <= $m_end
+                  AND DAY(bill_sale_created_date) <= $d_end
                 )
                 $condition_sale
                 $condition_has_bonus
@@ -167,8 +164,8 @@ class ReportController extends Controller {
         $year = date("Y");
 
         if (!empty($_POST)) {
-          $month = $_POST['month'];
-          $year = $_POST['year'];
+          $month = Util::input($_POST['month']);
+          $year = Util::input($_POST['year']);
         }
 
         $total_day = cal_days_in_month(CAL_GREGORIAN, $month, $year);
@@ -205,7 +202,8 @@ class ReportController extends Controller {
         "result_sum" => 0,
         'yearList' => $yearList,
         'billSale' => $billSale,
-        'monthRange' => $monthRange
+        'monthRange' => $monthRange,
+        'sum' => 0
       ));
     }
 
@@ -369,7 +367,7 @@ class ReportController extends Controller {
     }
 
   public function actionPrintBillGetRepair($repair_id) {
-    $repair = Repair::model()->findByPk($repair_id);
+    $repair = Repair::model()->findByPk((int) $repair_id);
     $org = Organization::model()->find();
 
     $repair->repair_date = Util::mysqlToThaiDate($repair->repair_date);
@@ -383,7 +381,7 @@ class ReportController extends Controller {
   }
 
   public function actionPrintBillPayGetRepair($repair_id) {
-    $repair = Repair::model()->findByPk($repair_id);
+    $repair = Repair::model()->findByPk((int) $repair_id);
     $org = Organization::model()->find();
 
     $repair->repair_date = Util::mysqlToThaiDate($repair->repair_date);
@@ -412,7 +410,7 @@ class ReportController extends Controller {
       ";
 
       $billSaleDetails = Yii::app()->db->createCommand($sql)->queryAll();
-      $member = Member::model()->findByPk($member_id);
+      $member = Member::model()->findByPk((int) $member_id);
 
       $this->render('//Report/SumSalePerMemberDetail', array(
         'n' => 1,
@@ -429,8 +427,8 @@ class ReportController extends Controller {
     $pays = null;
 
     if (!empty($_POST)) {
-      $from = $_POST['from'];
-      $to = $_POST['to'];
+      $from = Util::input($_POST['from']);
+      $to = Util::input($_POST['to']);
 
       $arr_from = explode('/', $from);
       $arr_to = explode('/', $to);

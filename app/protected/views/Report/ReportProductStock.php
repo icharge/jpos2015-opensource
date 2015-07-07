@@ -1,8 +1,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานสินค้า</div>
-
     <div class="panel-body">
         <?php
         $model = new Product();
@@ -24,6 +23,7 @@
                 "class" => "pagination"
               )
             ),
+            'itemsCssClass' => 'table table-bordered table-striped',
             'summaryText' => "แสดงข้อมูลตั้งแต่ {start} ถึง {end} จากข้อมูล {count}",
             'pager' => array('header' => ''),
             'columns' => array(

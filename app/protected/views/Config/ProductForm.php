@@ -107,13 +107,15 @@
   }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">สินค้า</div>
   <div class="panel-body">
 
     <ul class="nav nav-tabs" role="tablist">
-      <li class="active"><a href="#productInfo" role="tab" data-toggle="tab">ข้อมูลสินค้า</a></li>
       <?php if (!empty($_GET['id'])): ?>
+      <li class="active">
+        <a href="#productInfo" role="tab" data-toggle="tab">ข้อมูลสินค้า</a>
+      </li>
       <li><a href="#profile" role="tab" data-toggle="tab">ราคาจำหน่าย</a></li>
       <li><a href="#priceByBarCode" role="tab" data-toggle="tab">ราคาจำหน่าย แยกตามบาร์โค้ด</a></li>
       <li><a href="#printBarCode" role="tab" data-toggle="tab">พิมพ์บาร์โค้ด</a></li>

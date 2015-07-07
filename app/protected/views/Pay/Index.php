@@ -1,7 +1,7 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">รายจ่าย</div>
   <div class="panel-body">
-    <a href="index.php?r=Pay/Form" class="btn btn-primary">
+    <a href="index.php?r=Pay/Form" class="btn btn-info">
       <i class="glyphicon glyphicon-plus"></i>
       เพิ่มรายการ
     </a>
@@ -24,11 +24,11 @@
           <td style="text-align: right"><?php echo $n++; ?></td>
           <td><?php echo $pay->name; ?></td>
           <td><?php echo $pay->remark; ?></td>
-          <td><?php echo $pay->PayType->name; ?></td>
+          <td><?php echo @$pay->PayType->name; ?></td>
           <td align="center"><?php echo $pay->created_at; ?></td>
           <td style="text-align: right"><?php echo number_format($pay->price, 2); ?></td>
           <td style="text-align: center">
-            <a href="index.php?r=Pay/Edit&id=<?php echo $pay->id; ?>" class="btn btn-primary">
+            <a href="index.php?r=Pay/Edit&id=<?php echo $pay->id; ?>" class="btn btn-info">
               <i class="glyphicon glyphicon-pencil"></i>
             </a>
             <a href="index.php?r=Pay/Delete&id=<?php echo $pay->id; ?>" class="btn btn-danger" onclick="return confirm('ยืนยันการลบ')">

@@ -18,20 +18,6 @@
 </style>
 
 <script type="text/javascript">
-    $(function() {
-        $("input[name=date_find]").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd/mm/yy'
-        });
-
-        $("input[name=date_end]").datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'dd/mm/yy'
-        });
-    });
-    
     function printReport() {
 	    var url = 'index.php?r=Dialog/ReportSalePerDayPdf';
 	    var options = 'dialogWidth=750px; dialogHeight=600px';
@@ -49,7 +35,7 @@
     }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานยอดขายประจำวัน</div>
     <div class="panel-body">
     	<form name="form1" method="post">
@@ -69,9 +55,9 @@
         </div>
         <div>
             <label style="width: 80px">เลือกวันที่</label>
-            <input type="text" name="date_find" class="form-control" style="width: 200px" value="<?php echo $date_find; ?>" />
+            <input type="text" name="date_find" class="form-control datepicker" style="width: 200px" value="<?php echo $date_find; ?>" />
             ถึง
-            <input type="text" name="date_end" class="form-control" style="width: 200px" value="<?php echo $date_end; ?>" />
+            <input type="text" name="date_end" class="form-control datepicker" style="width: 200px" value="<?php echo $date_end; ?>" />
 
             <span class="alert alert-success" style="padding: 7px">
             	<input type="checkbox" 
@@ -98,7 +84,7 @@
         <div>
             <label style="width: 80px"></label>
 
-            <a href="#" class="btn btn-primary" onclick="document.form1.submit();">
+            <a href="#" class="btn btn-info" onclick="document.form1.submit();">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงรายงาน
             </a>
@@ -107,11 +93,11 @@
 
 		<?php if (!empty($_POST)) : ?>
         	<div style="text-align: right; padding-bottom: 5px;">
-        		<a href="#" class="btn btn-primary" onclick="printReport()">
+        		<a href="#" class="btn btn-info" onclick="printReport()">
         			<span class="glyphicon glyphicon-print"></span>
         			พิมพ์รายงาน
         		</a>
-                <a href="#" class="btn btn-primary" onclick="exportReport()">
+                <a href="#" class="btn btn-info" onclick="exportReport()">
                     <span class="glyphicon glyphicon-open"></span>
                     ส่งออกเป็น Excel
                 </a>
@@ -121,7 +107,7 @@
             	<thead>
 	                <tr>
 	                    <th width="30px" style="text-align: right">#</th>
-                        <th width="100px" style="text-align: center">วันที่</th>
+                        <th width="140px" style="text-align: center">วันที่</th>
 	                    <th width="60px" style="text-align: center">บิล</th>
 	                    <th width="100px" style="text-align: center">รหัสสินค้า</th>
 	                    <th>รายการสินค้า</th>
@@ -293,7 +279,7 @@
             </table>
         </div>
 
-        <div class="alert alert-info" style="margin-left: 15px; margin-right: 15px;">
+        <div class="alert alert-info" style="margin-left: 15px; margin-right: 15px; margin-bottom: 15px">
             <strong>เงินในลิ้นชักวันนี้: </strong>
             <input type="text" disabled="disabled" value="<?php echo @number_format($drawcash->draw_price, 2); ?>" class="form-control" style="width: 100px; text-align: right" />
             
@@ -306,5 +292,6 @@
             <label style="width: 150px">รวมเงินในลิ้นชัก: </label>
             <input type="text" disabled="disabled" value="<?php echo @number_format($sum + $drawcash->draw_price, 2); ?>" class="form-control" style="width: 100px; text-align: right" />
         </div>
+        <br />
     <?php endif; ?>
 </div>

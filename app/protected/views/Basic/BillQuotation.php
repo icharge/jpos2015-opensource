@@ -376,10 +376,10 @@
   }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">ใบเสนอราคา</div>
 
-  <div class="navbar-primary mynav">
+  <div class="navbar-info mynav">
     <div class="pull-left">
       <ul class="nav navbar-nav">
         <li><a href="#" onclick="return newQuotation()"><i class="glyphicon glyphicon-plus"></i> เริ่มใบเสนอราคาใหม่</a></li>
@@ -461,7 +461,7 @@
                 <span id="productPriceSum" />
               </td>
               <td>
-                <a href="#" class="btn btn-primary" onclick="return addRow()">
+                <a href="#" class="btn btn-info" onclick="return addRow()">
                   <i class="glyphicon glyphicon-plus"></i>
                 </a>
               </td>

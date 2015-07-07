@@ -15,7 +15,7 @@
   }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานลูกหนี้</div>
     <div class="panel-body">
         <?php
@@ -32,6 +32,7 @@
                 "class" => "pagination"
               )
             ),
+            'itemsCssClass' => 'table table-bordered table-striped',
             'columns' => array(
                 array(
                   'header' => 'รหัสบิล',

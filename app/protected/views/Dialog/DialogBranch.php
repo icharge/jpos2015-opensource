@@ -12,6 +12,7 @@
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider' => $model,
+    'itemsCssClass' => 'table table-bordered table-striped',
     'columns' => array(
         array(
             'name' => 'branch_id',

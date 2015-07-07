@@ -2,6 +2,7 @@
     $this->widget('zii.widgets.grid.CGridView', array(
         'dataProvider' => $model,
         'summaryText' => '',
+        'itemsCssClass' => 'table table-bordered table-striped',
         'columns' => array(
             array(
                 'name' => 'member_code',

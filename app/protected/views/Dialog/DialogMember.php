@@ -21,10 +21,10 @@
     });
 </script>
 
-<div class="alert alert-info">
+<div class="">
     <form name="formSearchMember" class="form-inline">
         <input type="text" id="search_member" name="search_member" class="form-control" style="width: 200px" />
-        <a href="javascript:void(0)" onclick="searchMember()" class="btn btn-primary">ค้นหา</a>
+        <a href="javascript:void(0)" onclick="searchMember()" class="btn btn-info">ค้นหา</a>
     </form>
 </div>
 

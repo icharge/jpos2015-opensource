@@ -1,7 +1,7 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">ประเภทรายจ่าย</div>
   <div class="panel-body">
-    <a href="index.php?r=PayType/Form" class="btn btn-primary">
+    <a href="index.php?r=PayType/Form" class="btn btn-info">
       <i class="glyphicon glyphicon-plus"></i>
       เพิ่มรายการ
     </a>
@@ -21,7 +21,7 @@
           <td><?php echo $payType->name; ?></td>
           <td><?php echo $payType->remark; ?></td>
           <td>
-            <a href="index.php?r=PayType/Edit&id=<?php echo $payType->id; ?>" class="btn btn-primary">
+            <a href="index.php?r=PayType/Edit&id=<?php echo $payType->id; ?>" class="btn btn-info">
               <i class="glyphicon glyphicon-pencil"></i>
             </a>
           </td>

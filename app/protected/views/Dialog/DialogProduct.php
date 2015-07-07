@@ -40,9 +40,9 @@
     });
 </script>
 
-<div class="input-group" style="width: 270px">
-    <input type="text" name="search" class="form-control" style="width: 200px" />
-    <a href="#" style="color: white" class="btn btn-primary input-group-addon" onclick="return searchProduct()">
+<div class="" style="width: 270px">
+    <input type="text" name="search" class="form-control" style="width: 150px" />
+    <a href="#" style="color: white" class="btn btn-info" onclick="return searchProduct()">
         <i class="glyphicon glyphicon-search"></i>
         ค้นหา
     </a>

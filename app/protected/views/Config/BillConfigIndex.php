@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
 	<div class="panel-heading">กำหนดขนาดบิล</div>
 	<div class="panel-body">
 		<form method="post" name="formBillConfig">
@@ -339,7 +339,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<a href="#" class="btn btn-primary" onclick="formBillConfig.submit()">
+			<a href="#" class="btn btn-info" onclick="formBillConfig.submit()">
 				<b class="glyphicon glyphicon-floppy-disk"></b>
 				Save
 			</a>

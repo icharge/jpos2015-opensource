@@ -1,5 +1,5 @@
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานยอดขายตามสมาชิก</div>
     <div class="panel-body">
         <?php echo CHtml::form(Yii::app()->controller->createUrl('//Report/SaleSumPerMember'), 'post', array('name' => 'form1')); ?>
@@ -11,7 +11,7 @@
                     'style' => 'width: 100px'
             )); ?>
 
-            <a href="#" class="btn btn-primary" onclick="document.form1.submit();">
+            <a href="#" class="btn btn-info" onclick="document.form1.submit();">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงรายงาน
             </a>

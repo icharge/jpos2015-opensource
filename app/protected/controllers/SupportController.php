@@ -4,9 +4,9 @@ class SupportController extends Controller {
 
   public function actionSubPrice() {
     if (!empty($_POST)) {
-      $sub_price = $_POST['sub_price'];
-      $sub_type = $_POST['sub_type'];
-      $sub_price_position = $_POST['sub_price_position'];
+      $sub_price = Util::input($_POST['sub_price']);
+      $sub_type = Util::input($_POST['sub_type']);
+      $sub_price_position = Util::input($_POST['sub_price_position']);
       
       if ($sub_type == "baht") {
         // ส่วนลดแบบ บาท
@@ -71,7 +71,7 @@ class SupportController extends Controller {
     $configSoftware = ConfigSoftware::model()->find();
 
     if (!empty($_POST)) {
-      $configSoftware->score = $_POST['score'];
+      $configSoftware->score = Util::input($_POST['score']);
       $configSoftware->save();
     }
 

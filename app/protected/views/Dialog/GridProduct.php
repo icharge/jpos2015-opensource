@@ -1,6 +1,18 @@
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
     'dataProvider' => $model,
+    'itemsCssClass' => 'table table-bordered table-striped',
+    "pagerCssClass" => "pagination",
+        "pager" => array(
+          "selectedPageCssClass" => "active",
+          "firstPageCssClass" => "previous",
+          "lastPageCssClass" => "next",
+          "hiddenPageCssClass" => "disabled",
+          "header" => "",
+          "htmlOptions" => array(
+            "class" => "pagination"
+          )
+        ),
     'columns' => array(
         array(
             'name' => 'product_code',

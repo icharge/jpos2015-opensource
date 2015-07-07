@@ -23,7 +23,7 @@
     }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รับคืนสินค้า</div>
     <div class="panel-body">
         <?php
@@ -43,18 +43,17 @@
             )); ?>
         </div>
         <div>
-            <div class="form-search">
+            <div class="">
                 <?php echo $form->labelEx($model, 'bill_sale_detail_barcode'); ?>
                 <?php echo $form->textField($model, 'bill_sale_detail_barcode', array(
 									'class' => 'form-control',
 									'style' => 'width: 200px'
                 )); ?>
 								
-                <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="return browseProduct()">
+                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="return browseProduct()">
                     <i class="glyphicon glyphicon-search"></i>
-                    ...
                 </a>
-                <a href="#" class="btn btn-success" onclick="showData()">
+                <a href="#" class="btn btn-info" onclick="showData()">
                     <i class="glyphicon glyphicon-import"></i>
                     แสดงรายการ
                 </a>

@@ -6721,3 +6721,807 @@ in /Applications/MAMP/htdocs/jpos2014/app/index.php (16)
 2015/06/21 07:31:42 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_out_of_stock'. The SQL statement executed was: ALTER TABLE config_software ADD sale_out_of_stock ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ขายสินค้าหมดสต็อคได้'.
 in /Applications/MAMP/htdocs/jpos2014/app/protected/controllers/HelpController.php (515)
 in /Applications/MAMP/htdocs/jpos2014/app/index.php (16)
+2015/06/23 05:52:40 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES)' in F:\xampp\htdocs\jpos-opensource\framework\db\CDbConnection.php:382
+Stack trace:
+#0 F:\xampp\htdocs\jpos-opensource\framework\db\CDbConnection.php(330): CDbConnection->open()
+#1 F:\xampp\htdocs\jpos-opensource\framework\db\CDbConnection.php(308): CDbConnection->setActive(true)
+#2 F:\xampp\htdocs\jpos-opensource\framework\base\CModule.php(387): CDbConnection->init()
+#3 F:\xampp\htdocs\jpos-opensource\framework\base\CApplication.php(450): CModule->getComponent('db')
+#4 F:\xampp\htdocs\jpos-opensource\framework\db\ar\CActiveRecord.php(634): CApplication->getDb()
+#5 F:\xampp\htdocs\jpos-opensource\framework\db\ar\CActiveRecord.php(2361): CActiveRecord->getDbConnection()
+#6 F:\xampp\htdocs\jpos-opensource\framework\db\ar\CActiveRecord.php(411): CActiveRecordMetaData->__construct(Object(User))
+#7 F:\xampp\htdocs\jpos-opensource\framework\db\ar\CActiveRecord.php(79): CActiveRecord->getMetaData()
+#8 F:\xampp\htdocs\jpos-opensource\app\protected\controllers\SiteController.php(35): CActiveRecord->__construct()
+#9 F:\xampp\htdocs\jpos-opensource\framework\web\actions\CInlineAction.php(49): SiteController->actionIndex()
+#10 F:\xampp\htdocs\jpos-opensource\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#11 F:\xampp\htdocs\jpos-opensource\framework\web\CController.php(286): CController->runAction(Object(CInlineAction))
+#12 F:\xampp\htdocs\jpos-opensource\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#13 F:\xampp\htdocs\jpos-opensource\framework\web\CWebApplication.php(282): CController->run('')
+#14 F:\xampp\htdocs\jpos-opensource\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#15 F:\xampp\htdocs\jpos-opensource\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#16 F:\xampp\htdocs\jpos-opensource\app\index.php(16): CApplication->run()
+#17 {main}
+REQUEST_URI=/jpos-opensource/app/
+---
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_tag'. The SQL statement executed was: ALTER TABLE tb_product ADD product_tag INT(1) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (34)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_pic'. The SQL statement executed was: ALTER TABLE tb_product ADD product_pic VARCHAR(255) NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (41)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'weight'. The SQL statement executed was: ALTER TABLE tb_product ADD weight INT(11) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (49)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'qty_end'. The SQL statement executed was: ALTER TABLE product_prices ADD qty_end INT(5) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (57)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (123)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header_bg'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header_bg ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (131)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_group'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_group ENUM('internal', 'external') DEFAULT 'internal' COMMENT 'สินค้าซ่อมมาจากร้านหรือไม่ internal คือสินค้าในร้าน external คือสินค้านอกร้าน' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (149)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_tel'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_tel VARCHAR(50) COMMENT 'เบอร์โทรติดต่อ' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (156)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_name VARCHAR(255) COMMENT 'ลูกค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (163)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_product_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_product_name VARCHAR(255) COMMENT 'สินค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (170)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_end_date'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_end_date DATETIME COMMENT 'วันที่ซ่อมเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (177)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'slip_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD slip_font_size INT(2) COMMENT 'ขนาดตัวอักษร' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (184)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_code'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_code VARCHAR(50) COMMENT 'รหัสสินค้า ที่รับเข้า' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (191)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_qty_per_pack'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_qty_per_pack INT(2) COMMENT 'จำนวนต่อแพค' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (198)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_font_size INT(2) COMMENT 'ขนาดตัวอักษร ใบเสร็จ' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (205)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_width'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_width INT(2) COMMENT 'ความกว้างใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (212)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_height'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_height INT(2) COMMENT 'ความสูงใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (219)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_paper'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_paper VARCHAR(10) COMMENT 'รูปแบบกระดาษ ใบเสร็จ' NOT NULL DEFAULT 'A4'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (226)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_position'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_position VARCHAR(15) COMMENT 'แนวนอน แนวตั้ง ของใบเสร็จ' NOT NULL DEFAULT 'vertical'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (233)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'vat_type'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD vat_type ENUM('in', 'out') COMMENT 'รูปแบบ vat (in, out)'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (240)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: 
+      INSERT INTO config_software(
+        id,
+        alert_min_stock,
+        bill_slip_title,
+        bill_send_title,
+        bill_vat_title,
+        bill_sale_title,
+        bill_drop_title,
+        items_per_page
+      )
+      VALUES (
+        1,
+        20,
+        'ใบเสร็จรับเงิน',
+        'ใบส่งสินค้า',
+        'ใบกำกับภาษี',
+        'ใบเสร็จรับเงิน',
+        'ใบวางบิล',
+        10
+      )
+    .
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (283)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'pk_temp'. The SQL statement executed was: ALTER TABLE sale_temp ADD pk_temp VARCHAR(50).
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (306)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'created_at'. The SQL statement executed was: ALTER TABLE sale_temp ADD created_at DATETIME.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (313)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_slip_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_slip_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (321)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_send_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (328)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_vat_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_vat_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (335)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_sale_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_sale_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (342)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_drop_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (349)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'score'. The SQL statement executed was: ALTER TABLE config_software ADD score INT(3) COMMENT 'กี่บาทเป็น 1 แต้ม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (356)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'price_before'. The SQL statement executed was: ALTER TABLE barcode_prices ADD price_before INT(6) COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (363)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale_detail ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (370)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE sale_temp ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (377)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bonus_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD bonus_price DOUBLE COMMENT 'ส่วนลด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (384)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'out_vat'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD out_vat DOUBLE COMMENT 'vat บวกเพิ่มกี่บาท'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (391)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'input_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD input_money DOUBLE COMMENT 'รับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (398)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'return_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD return_money DOUBLE COMMENT 'เงินทอน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (405)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:30 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'total_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD total_money DOUBLE COMMENT 'ยอดเงินทั้งหมด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (412)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_tag'. The SQL statement executed was: ALTER TABLE tb_product ADD product_tag INT(1) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (34)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_pic'. The SQL statement executed was: ALTER TABLE tb_product ADD product_pic VARCHAR(255) NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (41)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'weight'. The SQL statement executed was: ALTER TABLE tb_product ADD weight INT(11) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (49)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'qty_end'. The SQL statement executed was: ALTER TABLE product_prices ADD qty_end INT(5) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (57)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (123)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header_bg'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header_bg ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (131)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_group'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_group ENUM('internal', 'external') DEFAULT 'internal' COMMENT 'สินค้าซ่อมมาจากร้านหรือไม่ internal คือสินค้าในร้าน external คือสินค้านอกร้าน' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (149)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_tel'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_tel VARCHAR(50) COMMENT 'เบอร์โทรติดต่อ' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (156)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_name VARCHAR(255) COMMENT 'ลูกค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (163)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_product_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_product_name VARCHAR(255) COMMENT 'สินค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (170)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_end_date'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_end_date DATETIME COMMENT 'วันที่ซ่อมเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (177)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'slip_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD slip_font_size INT(2) COMMENT 'ขนาดตัวอักษร' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (184)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_code'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_code VARCHAR(50) COMMENT 'รหัสสินค้า ที่รับเข้า' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (191)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_qty_per_pack'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_qty_per_pack INT(2) COMMENT 'จำนวนต่อแพค' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (198)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_font_size INT(2) COMMENT 'ขนาดตัวอักษร ใบเสร็จ' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (205)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_width'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_width INT(2) COMMENT 'ความกว้างใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (212)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_height'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_height INT(2) COMMENT 'ความสูงใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (219)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_paper'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_paper VARCHAR(10) COMMENT 'รูปแบบกระดาษ ใบเสร็จ' NOT NULL DEFAULT 'A4'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (226)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_position'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_position VARCHAR(15) COMMENT 'แนวนอน แนวตั้ง ของใบเสร็จ' NOT NULL DEFAULT 'vertical'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (233)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'vat_type'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD vat_type ENUM('in', 'out') COMMENT 'รูปแบบ vat (in, out)'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (240)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: 
+      INSERT INTO config_software(
+        id,
+        alert_min_stock,
+        bill_slip_title,
+        bill_send_title,
+        bill_vat_title,
+        bill_sale_title,
+        bill_drop_title,
+        items_per_page
+      )
+      VALUES (
+        1,
+        20,
+        'ใบเสร็จรับเงิน',
+        'ใบส่งสินค้า',
+        'ใบกำกับภาษี',
+        'ใบเสร็จรับเงิน',
+        'ใบวางบิล',
+        10
+      )
+    .
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (283)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'pk_temp'. The SQL statement executed was: ALTER TABLE sale_temp ADD pk_temp VARCHAR(50).
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (306)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'created_at'. The SQL statement executed was: ALTER TABLE sale_temp ADD created_at DATETIME.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (313)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_slip_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_slip_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (321)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_send_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (328)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_vat_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_vat_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (335)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_sale_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_sale_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (342)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_drop_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (349)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'score'. The SQL statement executed was: ALTER TABLE config_software ADD score INT(3) COMMENT 'กี่บาทเป็น 1 แต้ม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (356)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'price_before'. The SQL statement executed was: ALTER TABLE barcode_prices ADD price_before INT(6) COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (363)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale_detail ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (370)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE sale_temp ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (377)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bonus_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD bonus_price DOUBLE COMMENT 'ส่วนลด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (384)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'out_vat'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD out_vat DOUBLE COMMENT 'vat บวกเพิ่มกี่บาท'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (391)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'input_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD input_money DOUBLE COMMENT 'รับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (398)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'return_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD return_money DOUBLE COMMENT 'เงินทอน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (405)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'total_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD total_money DOUBLE COMMENT 'ยอดเงินทั้งหมด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (412)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'count_hour'. The SQL statement executed was: ALTER TABLE config_software ADD count_hour INTEGER COMMENT 'ค่าชั่วโมง'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (419)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_send_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบส่งสินค้า'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (426)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_drop_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบวางบิล'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (433)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_add_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_add_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบกำกับภาษี'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (440)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_condition_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_condition_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบเสร็จรับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (447)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'remark'. The SQL statement executed was: ALTER TABLE tb_member ADD remark VARCHAR(1000) COMMENT 'รายละเอียดเพิ่มเติม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (473)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_edit_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_edit_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ แก้ไขราคาขายได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (501)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_add_sub_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_add_sub_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ คิดส่วนลดได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (508)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_out_of_stock'. The SQL statement executed was: ALTER TABLE config_software ADD sale_out_of_stock ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ขายสินค้าหมดสต็อคได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (515)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_tag'. The SQL statement executed was: ALTER TABLE tb_product ADD product_tag INT(1) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (34)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_pic'. The SQL statement executed was: ALTER TABLE tb_product ADD product_pic VARCHAR(255) NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (41)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'weight'. The SQL statement executed was: ALTER TABLE tb_product ADD weight INT(11) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (49)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'qty_end'. The SQL statement executed was: ALTER TABLE product_prices ADD qty_end INT(5) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (57)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (123)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header_bg'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header_bg ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (131)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_group'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_group ENUM('internal', 'external') DEFAULT 'internal' COMMENT 'สินค้าซ่อมมาจากร้านหรือไม่ internal คือสินค้าในร้าน external คือสินค้านอกร้าน' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (149)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_tel'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_tel VARCHAR(50) COMMENT 'เบอร์โทรติดต่อ' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (156)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_name VARCHAR(255) COMMENT 'ลูกค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (163)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_product_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_product_name VARCHAR(255) COMMENT 'สินค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (170)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_end_date'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_end_date DATETIME COMMENT 'วันที่ซ่อมเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (177)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'slip_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD slip_font_size INT(2) COMMENT 'ขนาดตัวอักษร' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (184)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_code'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_code VARCHAR(50) COMMENT 'รหัสสินค้า ที่รับเข้า' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (191)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_qty_per_pack'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_qty_per_pack INT(2) COMMENT 'จำนวนต่อแพค' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (198)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_font_size INT(2) COMMENT 'ขนาดตัวอักษร ใบเสร็จ' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (205)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_width'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_width INT(2) COMMENT 'ความกว้างใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (212)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_height'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_height INT(2) COMMENT 'ความสูงใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (219)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_paper'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_paper VARCHAR(10) COMMENT 'รูปแบบกระดาษ ใบเสร็จ' NOT NULL DEFAULT 'A4'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (226)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_position'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_position VARCHAR(15) COMMENT 'แนวนอน แนวตั้ง ของใบเสร็จ' NOT NULL DEFAULT 'vertical'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (233)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'vat_type'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD vat_type ENUM('in', 'out') COMMENT 'รูปแบบ vat (in, out)'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (240)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: 
+      INSERT INTO config_software(
+        id,
+        alert_min_stock,
+        bill_slip_title,
+        bill_send_title,
+        bill_vat_title,
+        bill_sale_title,
+        bill_drop_title,
+        items_per_page
+      )
+      VALUES (
+        1,
+        20,
+        'ใบเสร็จรับเงิน',
+        'ใบส่งสินค้า',
+        'ใบกำกับภาษี',
+        'ใบเสร็จรับเงิน',
+        'ใบวางบิล',
+        10
+      )
+    .
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (283)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'pk_temp'. The SQL statement executed was: ALTER TABLE sale_temp ADD pk_temp VARCHAR(50).
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (306)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'created_at'. The SQL statement executed was: ALTER TABLE sale_temp ADD created_at DATETIME.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (313)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_slip_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_slip_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (321)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_send_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (328)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_vat_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_vat_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (335)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_sale_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_sale_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (342)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_drop_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (349)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'score'. The SQL statement executed was: ALTER TABLE config_software ADD score INT(3) COMMENT 'กี่บาทเป็น 1 แต้ม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (356)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'price_before'. The SQL statement executed was: ALTER TABLE barcode_prices ADD price_before INT(6) COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (363)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale_detail ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (370)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE sale_temp ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (377)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bonus_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD bonus_price DOUBLE COMMENT 'ส่วนลด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (384)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'out_vat'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD out_vat DOUBLE COMMENT 'vat บวกเพิ่มกี่บาท'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (391)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'input_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD input_money DOUBLE COMMENT 'รับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (398)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'return_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD return_money DOUBLE COMMENT 'เงินทอน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (405)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'total_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD total_money DOUBLE COMMENT 'ยอดเงินทั้งหมด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (412)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'count_hour'. The SQL statement executed was: ALTER TABLE config_software ADD count_hour INTEGER COMMENT 'ค่าชั่วโมง'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (419)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_send_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบส่งสินค้า'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (426)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_drop_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบวางบิล'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (433)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_add_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_add_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบกำกับภาษี'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (440)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_condition_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_condition_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบเสร็จรับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (447)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'remark'. The SQL statement executed was: ALTER TABLE tb_member ADD remark VARCHAR(1000) COMMENT 'รายละเอียดเพิ่มเติม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (473)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_edit_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_edit_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ แก้ไขราคาขายได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (501)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_add_sub_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_add_sub_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ คิดส่วนลดได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (508)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/06/23 05:53:43 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_out_of_stock'. The SQL statement executed was: ALTER TABLE config_software ADD sale_out_of_stock ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ขายสินค้าหมดสต็อคได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (515)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_tag'. The SQL statement executed was: ALTER TABLE tb_product ADD product_tag INT(1) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (34)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_pic'. The SQL statement executed was: ALTER TABLE tb_product ADD product_pic VARCHAR(255) NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (41)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'weight'. The SQL statement executed was: ALTER TABLE tb_product ADD weight INT(11) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (49)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'qty_end'. The SQL statement executed was: ALTER TABLE product_prices ADD qty_end INT(5) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (57)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (123)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header_bg'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header_bg ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (131)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_group'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_group ENUM('internal', 'external') DEFAULT 'internal' COMMENT 'สินค้าซ่อมมาจากร้านหรือไม่ internal คือสินค้าในร้าน external คือสินค้านอกร้าน' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (149)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_tel'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_tel VARCHAR(50) COMMENT 'เบอร์โทรติดต่อ' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (156)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_name VARCHAR(255) COMMENT 'ลูกค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (163)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_product_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_product_name VARCHAR(255) COMMENT 'สินค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (170)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_end_date'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_end_date DATETIME COMMENT 'วันที่ซ่อมเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (177)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'slip_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD slip_font_size INT(2) COMMENT 'ขนาดตัวอักษร' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (184)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_code'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_code VARCHAR(50) COMMENT 'รหัสสินค้า ที่รับเข้า' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (191)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_qty_per_pack'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_qty_per_pack INT(2) COMMENT 'จำนวนต่อแพค' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (198)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_font_size INT(2) COMMENT 'ขนาดตัวอักษร ใบเสร็จ' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (205)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_width'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_width INT(2) COMMENT 'ความกว้างใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (212)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_height'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_height INT(2) COMMENT 'ความสูงใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (219)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_paper'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_paper VARCHAR(10) COMMENT 'รูปแบบกระดาษ ใบเสร็จ' NOT NULL DEFAULT 'A4'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (226)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_position'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_position VARCHAR(15) COMMENT 'แนวนอน แนวตั้ง ของใบเสร็จ' NOT NULL DEFAULT 'vertical'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (233)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'vat_type'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD vat_type ENUM('in', 'out') COMMENT 'รูปแบบ vat (in, out)'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (240)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: 
+      INSERT INTO config_software(
+        id,
+        alert_min_stock,
+        bill_slip_title,
+        bill_send_title,
+        bill_vat_title,
+        bill_sale_title,
+        bill_drop_title,
+        items_per_page
+      )
+      VALUES (
+        1,
+        20,
+        'ใบเสร็จรับเงิน',
+        'ใบส่งสินค้า',
+        'ใบกำกับภาษี',
+        'ใบเสร็จรับเงิน',
+        'ใบวางบิล',
+        10
+      )
+    .
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (283)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'pk_temp'. The SQL statement executed was: ALTER TABLE sale_temp ADD pk_temp VARCHAR(50).
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (306)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'created_at'. The SQL statement executed was: ALTER TABLE sale_temp ADD created_at DATETIME.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (313)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_slip_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_slip_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (321)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_send_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (328)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_vat_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_vat_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (335)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_sale_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_sale_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (342)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_drop_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (349)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'score'. The SQL statement executed was: ALTER TABLE config_software ADD score INT(3) COMMENT 'กี่บาทเป็น 1 แต้ม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (356)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'price_before'. The SQL statement executed was: ALTER TABLE barcode_prices ADD price_before INT(6) COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (363)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale_detail ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (370)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE sale_temp ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (377)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bonus_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD bonus_price DOUBLE COMMENT 'ส่วนลด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (384)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'out_vat'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD out_vat DOUBLE COMMENT 'vat บวกเพิ่มกี่บาท'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (391)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'input_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD input_money DOUBLE COMMENT 'รับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (398)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'return_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD return_money DOUBLE COMMENT 'เงินทอน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (405)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'total_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD total_money DOUBLE COMMENT 'ยอดเงินทั้งหมด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (412)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'count_hour'. The SQL statement executed was: ALTER TABLE config_software ADD count_hour INTEGER COMMENT 'ค่าชั่วโมง'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (419)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_send_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบส่งสินค้า'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (426)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_drop_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบวางบิล'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (433)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_add_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_add_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบกำกับภาษี'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (440)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_condition_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_condition_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบเสร็จรับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (447)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'remark'. The SQL statement executed was: ALTER TABLE tb_member ADD remark VARCHAR(1000) COMMENT 'รายละเอียดเพิ่มเติม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (473)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_edit_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_edit_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ แก้ไขราคาขายได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (501)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_add_sub_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_add_sub_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ คิดส่วนลดได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (508)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:36 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_out_of_stock'. The SQL statement executed was: ALTER TABLE config_software ADD sale_out_of_stock ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ขายสินค้าหมดสต็อคได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (515)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_tag'. The SQL statement executed was: ALTER TABLE tb_product ADD product_tag INT(1) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (34)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'product_pic'. The SQL statement executed was: ALTER TABLE tb_product ADD product_pic VARCHAR(255) NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (41)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'weight'. The SQL statement executed was: ALTER TABLE tb_product ADD weight INT(11) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (49)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'qty_end'. The SQL statement executed was: ALTER TABLE product_prices ADD qty_end INT(5) DEFAULT 0 NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (57)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (123)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'logo_show_on_header_bg'. The SQL statement executed was: ALTER TABLE tb_organization ADD logo_show_on_header_bg ENUM('no', 'yes') DEFAULT 'no' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (131)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_group'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_group ENUM('internal', 'external') DEFAULT 'internal' COMMENT 'สินค้าซ่อมมาจากร้านหรือไม่ internal คือสินค้าในร้าน external คือสินค้านอกร้าน' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (149)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_tel'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_tel VARCHAR(50) COMMENT 'เบอร์โทรติดต่อ' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (156)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_name VARCHAR(255) COMMENT 'ลูกค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (163)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_product_name'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_product_name VARCHAR(255) COMMENT 'สินค้า' NOT NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (170)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'repair_end_date'. The SQL statement executed was: ALTER TABLE tb_repair ADD repair_end_date DATETIME COMMENT 'วันที่ซ่อมเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (177)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'slip_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD slip_font_size INT(2) COMMENT 'ขนาดตัวอักษร' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (184)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_code'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_code VARCHAR(50) COMMENT 'รหัสสินค้า ที่รับเข้า' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (191)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'import_bill_detail_qty_per_pack'. The SQL statement executed was: ALTER TABLE tb_bill_import_detail ADD import_bill_detail_qty_per_pack INT(2) COMMENT 'จำนวนต่อแพค' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (198)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_font_size'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_font_size INT(2) COMMENT 'ขนาดตัวอักษร ใบเสร็จ' NOT NULL DEFAULT 11.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (205)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_width'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_width INT(2) COMMENT 'ความกว้างใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (212)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_height'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_height INT(2) COMMENT 'ความสูงใบเสร็จ' NULL.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (219)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_paper'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_paper VARCHAR(10) COMMENT 'รูปแบบกระดาษ ใบเสร็จ' NOT NULL DEFAULT 'A4'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (226)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_position'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_position VARCHAR(15) COMMENT 'แนวนอน แนวตั้ง ของใบเสร็จ' NOT NULL DEFAULT 'vertical'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (233)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'vat_type'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD vat_type ENUM('in', 'out') COMMENT 'รูปแบบ vat (in, out)'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (240)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry '1' for key 'PRIMARY'. The SQL statement executed was: 
+      INSERT INTO config_software(
+        id,
+        alert_min_stock,
+        bill_slip_title,
+        bill_send_title,
+        bill_vat_title,
+        bill_sale_title,
+        bill_drop_title,
+        items_per_page
+      )
+      VALUES (
+        1,
+        20,
+        'ใบเสร็จรับเงิน',
+        'ใบส่งสินค้า',
+        'ใบกำกับภาษี',
+        'ใบเสร็จรับเงิน',
+        'ใบวางบิล',
+        10
+      )
+    .
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (283)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'pk_temp'. The SQL statement executed was: ALTER TABLE sale_temp ADD pk_temp VARCHAR(50).
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (306)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'created_at'. The SQL statement executed was: ALTER TABLE sale_temp ADD created_at DATETIME.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (313)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_slip_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_slip_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (321)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_send_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (328)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_vat_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_vat_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (335)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_sale_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_sale_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (342)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_footer'. The SQL statement executed was: ALTER TABLE config_software ADD bill_drop_footer TEXT CHARACTER SET utf8 COLLATE utf8_general_ci.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (349)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'score'. The SQL statement executed was: ALTER TABLE config_software ADD score INT(3) COMMENT 'กี่บาทเป็น 1 แต้ม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (356)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'price_before'. The SQL statement executed was: ALTER TABLE barcode_prices ADD price_before INT(6) COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (363)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale_detail ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (370)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'old_price'. The SQL statement executed was: ALTER TABLE sale_temp ADD old_price DOUBLE COMMENT 'ราคาทุน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (377)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bonus_price'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD bonus_price DOUBLE COMMENT 'ส่วนลด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (384)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'out_vat'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD out_vat DOUBLE COMMENT 'vat บวกเพิ่มกี่บาท'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (391)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'input_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD input_money DOUBLE COMMENT 'รับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (398)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'return_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD return_money DOUBLE COMMENT 'เงินทอน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (405)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'total_money'. The SQL statement executed was: ALTER TABLE tb_bill_sale ADD total_money DOUBLE COMMENT 'ยอดเงินทั้งหมด'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (412)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'count_hour'. The SQL statement executed was: ALTER TABLE config_software ADD count_hour INTEGER COMMENT 'ค่าชั่วโมง'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (419)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_send_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_send_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบส่งสินค้า'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (426)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_drop_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_drop_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบวางบิล'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (433)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'bill_add_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD bill_add_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบกำกับภาษี'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (440)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_condition_show_line'. The SQL statement executed was: ALTER TABLE tb_bill_config ADD sale_condition_show_line ENUM('no', 'yes') DEFAULT 'no' COMMENT 'แสดงเส้นใบเสร็จรับเงิน'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (447)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'remark'. The SQL statement executed was: ALTER TABLE tb_member ADD remark VARCHAR(1000) COMMENT 'รายละเอียดเพิ่มเติม'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (473)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_edit_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_edit_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ แก้ไขราคาขายได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (501)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_can_add_sub_price'. The SQL statement executed was: ALTER TABLE config_software ADD sale_can_add_sub_price ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ให้แคชเชียร์ คิดส่วนลดได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (508)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:38:45 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S21]: Column already exists: 1060 Duplicate column name 'sale_out_of_stock'. The SQL statement executed was: ALTER TABLE config_software ADD sale_out_of_stock ENUM('no', 'yes') DEFAULT 'no' COMMENT 'ขายสินค้าหมดสต็อคได้'.
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\HelpController.php (515)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)
+2015/07/07 16:52:22 [error] [php] The device must be set before to be open (F:\xampp\htdocs\jpos-opensource\app\protected\components\Serial.php:166)
+Stack trace:
+#0 F:\xampp\htdocs\jpos-opensource\framework\web\actions\CInlineAction.php(49): AjaxController->actionOpenDrawCash()
+#1 F:\xampp\htdocs\jpos-opensource\framework\web\CController.php(308): CInlineAction->runWithParams()
+#2 F:\xampp\htdocs\jpos-opensource\framework\web\CController.php(286): AjaxController->runAction()
+#3 F:\xampp\htdocs\jpos-opensource\framework\web\CController.php(265): AjaxController->runActionWithFilters()
+#4 F:\xampp\htdocs\jpos-opensource\framework\web\CWebApplication.php(282): AjaxController->run()
+#5 F:\xampp\htdocs\jpos-opensource\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#6 F:\xampp\htdocs\jpos-opensource\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#7 F:\xampp\htdocs\jpos-opensource\app\index.php(16): CWebApplication->run()
+REQUEST_URI=/jpos-opensource/app/index.php?r=Ajax/OpenDrawCash
+in F:\xampp\htdocs\jpos-opensource\app\protected\components\Serial.php (166)
+in F:\xampp\htdocs\jpos-opensource\app\protected\controllers\AjaxController.php (425)
+in F:\xampp\htdocs\jpos-opensource\app\index.php (16)

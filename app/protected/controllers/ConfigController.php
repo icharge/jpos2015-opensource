@@ -22,13 +22,13 @@ class ConfigController extends Controller {
       $logo_show_on_header_bg = "no";
 
       if (!empty($_POST['logo_show_on_header'])) {
-        $logo_show_on_header = $_POST['logo_show_on_header'];
+        $logo_show_on_header = Util::input($_POST['logo_show_on_header']);
       }
       if (!empty($_POST['org_logo_show_on_bill'])) {
-        $org_logo_show_on_bill = $_POST['org_logo_show_on_bill'];
+        $org_logo_show_on_bill = Util::input($_POST['org_logo_show_on_bill']);
       }
       if (!empty($_POST['logo_show_on_header_bg'])) {
-        $logo_show_on_header_bg = $_POST['logo_show_on_header_bg'];
+        $logo_show_on_header_bg = Util::input($_POST['logo_show_on_header_bg']);
       }
 
       $on_bill = 'no';
@@ -95,12 +95,12 @@ class ConfigController extends Controller {
     $model = new Branch();
 
     if (!empty($_POST)) {
-      $pk = $_POST["Branch"]["branch_id"];
+      $pk = Util::input($_POST["Branch"]["branch_id"]);
 
       if (!empty($pk)) {
-        $model = Branch::model()->findByPk($pk);
+        $model = Branch::model()->findByPk((int) $pk);
       }
-      $model->attributes = $_POST["Branch"];
+      $model->attributes = Util::input($_POST["Branch"]);
 
       if ($model->save()) {
         $this->redirect(array('BranchIndex'));
@@ -108,7 +108,7 @@ class ConfigController extends Controller {
     }
 
     if ($id != null) {
-      $model = Branch::model()->findByPk($id);
+      $model = Branch::model()->findByPk((int) $id);
     }
     $this->render('//Config/BranchForm', array('model' => $model));
   }
@@ -116,7 +116,7 @@ class ConfigController extends Controller {
   function actionBranchDelete($id) {
     $this->checkLogin();
 
-    Branch::model()->deleteByPk($id);
+    Branch::model()->deleteByPk((int) $id);
     $this->redirect(array('BranchIndex'));
   }
 
@@ -145,12 +145,12 @@ class ConfigController extends Controller {
     $model = new GroupProduct();
 
     if (!empty($_POST)) {
-      $pk = $_POST["GroupProduct"]["group_product_id"];
+      $pk = Util::input($_POST["GroupProduct"]["group_product_id"]);
 
       if (!empty($pk)) {
-        $model = GroupProduct::model()->findByPk($pk);
+        $model = GroupProduct::model()->findByPk((int) $pk);
       }
-      $model->attributes = $_POST["GroupProduct"];
+      $model->attributes = Util::input($_POST["GroupProduct"]);
 
       if ($model->save()) {
         $this->redirect(array('GroupProductIndex'));
@@ -158,7 +158,7 @@ class ConfigController extends Controller {
     }
 
     if (!empty($id)) {
-      $model = GroupProduct::model()->findByPk($id);
+      $model = GroupProduct::model()->findByPk((int) $id);
     }
 
     $this->render('//Config/GroupProductForm', array(
@@ -169,7 +169,7 @@ class ConfigController extends Controller {
   function actionGroupProductDelete($id) {
     $this->checkLogin();
 
-    GroupProduct::model()->deleteByPk($id);
+    GroupProduct::model()->deleteByPk((int) $id);
     $this->redirect(array('GroupProductIndex'));
   }
 
@@ -198,7 +198,7 @@ class ConfigController extends Controller {
     }
 
     if (!empty($_GET['Product_sort'])) {
-      $order = $_GET['Product_sort'];
+      $order = Util::input($_GET['Product_sort']);
       $order = str_replace(".desc", " DESC", $order);
     } else {
       $order = "product_id DESC";
@@ -236,28 +236,28 @@ class ConfigController extends Controller {
     $default_product_sale_condition = 'sale';
 
     if (!empty($_POST)) {
-      $pk = $_POST["Product"]["product_id"];
+      $pk = Util::input($_POST["Product"]["product_id"]);
 
       if (!empty($pk)) {
-        $model = Product::model()->findByPk($pk);
+        $model = Product::model()->findByPk((int) $pk);
       }
 
       // group_product_code to group_product_id
-      $pk = $_POST['Product']['group_product_id'];
+      $pk = Util::input($_POST['Product']['group_product_id']);
       $groupProduct = GroupProduct::model()->findByAttributes(array(
         "group_product_code" => $pk
       ));
 
       if (empty($groupProduct)) {
-        $groupProduct = GroupProduct::model()->findByPk($pk);
+        $groupProduct = GroupProduct::model()->findByPk((int) $pk);
       }
 
-      $model->attributes = $_POST["Product"];
+      $model->attributes = Util::input($_POST["Product"]);
       $model->group_product_id = $groupProduct->group_product_id;
-      $model->weight = $_POST['weight'];
+      $model->weight = Util::input($_POST['weight']);
 
       if (!empty($_POST['product_tag'])) {
-        $model->product_tag = $_POST['product_tag'];
+        $model->product_tag = Util::input($_POST['product_tag']);
       } else {
         $model->product_tag = 0;
       }
@@ -270,7 +270,7 @@ class ConfigController extends Controller {
 
       // product_expire_date
       if (!empty($_POST['Product']['product_expire_date'])) {
-        $product_expire_date = $_POST['Product']['product_expire_date'];
+        $product_expire_date = Util::input($_POST['Product']['product_expire_date']);
         $model->product_expire_date = Util::thaiToMySQLDate($product_expire_date);
       }
 
@@ -315,7 +315,7 @@ class ConfigController extends Controller {
     $barcodePrices = null;
 
     if (!empty($id)) {
-      $model = Product::model()->findByPk($id);
+      $model = Product::model()->findByPk((int) $id);
       $model->product_expire_date = Util::mysqlToThaiDate($model->product_expire_date);
 
       $barcodePrices = BarcodePrice::model()->findAllByAttributes(array(
@@ -337,7 +337,7 @@ class ConfigController extends Controller {
   function actionProductDelete($id) {
     $this->checkLogin();
 
-    Product::model()->deleteByPk($id);
+    Product::model()->deleteByPk((int) $id);
     $this->redirect(array('ProductIndex'));
   }
 
@@ -366,12 +366,12 @@ class ConfigController extends Controller {
     $model = new Farmer();
 
     if (!empty($_POST)) {
-      $pk = $_POST['Farmer']['farmer_id'];
+      $pk = (int) Util::input($_POST['Farmer']['farmer_id']);
 
       if (!empty($pk)) {
-        $model = Farmer::model()->findByPk($pk);
+        $model = Farmer::model()->findByPk((int) $pk);
       }
-      $model->attributes = $_POST['Farmer'];
+      $model->attributes = Util::input($_POST['Farmer']);
 
       if ($model->save()) {
         $this->redirect(array('FarmerIndex'));
@@ -379,7 +379,7 @@ class ConfigController extends Controller {
     }
 
     if (!empty($id)) {
-      $model = Farmer::model()->findByPk($id);
+      $model = Farmer::model()->findByPk((int) $id);
     }
     $this->render('//Config/FarmerForm', array(
       'model' => $model
@@ -389,7 +389,7 @@ class ConfigController extends Controller {
   function actionFarmerDelete($id) {
     $this->checkLogin();
 
-    Farmer::model()->deleteByPk($id);
+    Farmer::model()->deleteByPk((int) $id);
     $this->redirect(array('FarmerIndex'));
   }
 
@@ -418,19 +418,20 @@ class ConfigController extends Controller {
     $model = new Member();
 
     if (!empty($_POST)) {
-      $pk = $_POST['Member']['member_id'];
+      $pk = Util::input($_POST['Member']['member_id']);
 
       if (!empty($pk)) {
-        $model = Member::model()->findByPk($pk);
+        $model = Member::model()->findByPk((int) $pk);
       }
 
-      $model->attributes = $_POST["Member"];
-      $model->remark = $_POST['Member']['remark'];
+      $model->attributes = Util::input($_POST["Member"]);
+      $model->remark = Util::input($_POST['Member']['remark']);
+      $model->tax_code = Util::input($_POST['Member']['tax_code']);
 
       // save branch_id
       if (empty($_POST['Member']['branch_id'])) {
         $user_id = Yii::app()->request->cookies['user_id']->value;
-        $user = User::model()->findByPk($user_id);
+        $user = User::model()->findByPk((int) $user_id);
 
         $model->branch_id = $user->branch_id;
       }
@@ -441,7 +442,7 @@ class ConfigController extends Controller {
     }
 
     if (!empty($id)) {
-      $model = Member::model()->findByPk($id);
+      $model = Member::model()->findByPk((int) $id);
     }
 
     $this->render('//Config/MemberForm', array(
@@ -452,7 +453,7 @@ class ConfigController extends Controller {
   function actionMemberDelete($id = null) {
     $this->checkLogin();
 
-    Member::model()->deleteByPk($id);
+    Member::model()->deleteByPk((int) $id);
     $this->redirect(array('MemberIndex'));
   }
 
@@ -481,12 +482,13 @@ class ConfigController extends Controller {
     $model = new User();
 
     if (!empty($_POST)) {
-      $pk = $_POST["User"]["user_id"];
+      $pk = Util::input($_POST["User"]["user_id"]);
+
       if (!empty($pk)) {
-        $model = User::model()->findByPk($id);
+        $model = User::model()->findByPk((int) $id);
       }
 
-      $model->attributes = $_POST["User"];
+      $model->attributes = Util::input($_POST["User"]);
 
       if ($model->save()) {
         $this->redirect(array('UserIndex'));
@@ -494,7 +496,7 @@ class ConfigController extends Controller {
     }
 
     if (!empty($id)) {
-      $model = User::model()->findByPk($id);
+      $model = User::model()->findByPk((int) $id);
     }
     $this->render('//Config/UserForm', array(
       'model' => $model
@@ -504,7 +506,7 @@ class ConfigController extends Controller {
   function actionUserDelete($id) {
     $this->checkLogin();
 
-    User::model()->deleteByPk($id);
+    User::model()->deleteByPk((int) $id);
     $this->redirect(array('UserIndex'));
   }
 
@@ -519,31 +521,31 @@ class ConfigController extends Controller {
 
     // Save
     if (!empty($_POST)) {
-      $billConfig->slip_font_size = $_POST['BillConfig']['slip_font_size'];
-      $billConfig->slip_width = $_POST['BillConfig']['slip_width'];
-      $billConfig->slip_height = $_POST['BillConfig']['slip_height'];
-      $billConfig->slip_paper = $_POST['BillConfig']['slip_paper'];
-      $billConfig->slip_position = $_POST['BillConfig']['slip_position'];
-      $billConfig->bill_send_product_width = $_POST['BillConfig']['bill_send_product_width'];
-      $billConfig->bill_send_product_height = $_POST['BillConfig']['bill_send_product_height'];
-      $billConfig->bill_send_product_paper = $_POST['BillConfig']['bill_send_product_paper'];
-      $billConfig->bill_send_product_position = $_POST['BillConfig']['bill_send_product_position'];
-      $billConfig->bill_send_show_line = @$_POST['bill_send_show_line'];
-      $billConfig->bill_drop_width = $_POST['BillConfig']['bill_drop_width'];
-      $billConfig->bill_drop_height = $_POST['BillConfig']['bill_drop_height'];
-      $billConfig->bill_drop_paper = $_POST['BillConfig']['bill_drop_paper'];
-      $billConfig->bill_drop_position = $_POST['BillConfig']['bill_drop_position'];
-      $billConfig->bill_drop_show_line = @$_POST['bill_drop_show_line'];
-      $billConfig->bill_add_tax_width = $_POST['BillConfig']['bill_add_tax_width'];
-      $billConfig->bill_add_tax_height = $_POST['BillConfig']['bill_add_tax_height'];
-      $billConfig->bill_add_tax_paper = $_POST['BillConfig']['bill_add_tax_paper'];
-      $billConfig->bill_add_tax_position = $_POST['BillConfig']['bill_add_tax_position'];
-      $billConfig->bill_add_show_line = @$_POST['bill_add_show_line'];
-      $billConfig->sale_width = $_POST['BillConfig']['sale_width'];
-      $billConfig->sale_height = $_POST['BillConfig']['sale_height'];
-      $billConfig->sale_paper = $_POST['BillConfig']['sale_paper'];
-      $billConfig->sale_position = $_POST['BillConfig']['sale_position'];
-      $billConfig->sale_condition_show_line = @$_POST['sale_condition_show_line'];
+      $billConfig->slip_font_size = Util::input($_POST['BillConfig']['slip_font_size']);
+      $billConfig->slip_width = Util::input($_POST['BillConfig']['slip_width']);
+      $billConfig->slip_height = Util::input($_POST['BillConfig']['slip_height']);
+      $billConfig->slip_paper = Util::input($_POST['BillConfig']['slip_paper']);
+      $billConfig->slip_position = Util::input($_POST['BillConfig']['slip_position']);
+      $billConfig->bill_send_product_width = Util::input($_POST['BillConfig']['bill_send_product_width']);
+      $billConfig->bill_send_product_height = Util::input($_POST['BillConfig']['bill_send_product_height']);
+      $billConfig->bill_send_product_paper = Util::input($_POST['BillConfig']['bill_send_product_paper']);
+      $billConfig->bill_send_product_position = Util::input($_POST['BillConfig']['bill_send_product_position']);
+      $billConfig->bill_send_show_line = @Util::input($_POST['bill_send_show_line']);
+      $billConfig->bill_drop_width = Util::input($_POST['BillConfig']['bill_drop_width']);
+      $billConfig->bill_drop_height = Util::input($_POST['BillConfig']['bill_drop_height']);
+      $billConfig->bill_drop_paper = Util::input($_POST['BillConfig']['bill_drop_paper']);
+      $billConfig->bill_drop_position = Util::input($_POST['BillConfig']['bill_drop_position']);
+      $billConfig->bill_drop_show_line = @Util::input($_POST['bill_drop_show_line']);
+      $billConfig->bill_add_tax_width = Util::input($_POST['BillConfig']['bill_add_tax_width']);
+      $billConfig->bill_add_tax_height = Util::input($_POST['BillConfig']['bill_add_tax_height']);
+      $billConfig->bill_add_tax_paper = Util::input($_POST['BillConfig']['bill_add_tax_paper']);
+      $billConfig->bill_add_tax_position = Util::input($_POST['BillConfig']['bill_add_tax_position']);
+      $billConfig->bill_add_show_line = @Util::input($_POST['bill_add_show_line']);
+      $billConfig->sale_width = Util::input($_POST['BillConfig']['sale_width']);
+      $billConfig->sale_height = Util::input($_POST['BillConfig']['sale_height']);
+      $billConfig->sale_paper = Util::input($_POST['BillConfig']['sale_paper']);
+      $billConfig->sale_position = Util::input($_POST['BillConfig']['sale_position']);
+      $billConfig->sale_condition_show_line = @Util::input($_POST['sale_condition_show_line']);
 
       if ($billConfig->save()) {
         $this->redirect(array('BillConfigIndex'));
@@ -571,11 +573,11 @@ class ConfigController extends Controller {
     $this->checkLogin();
 
     if (!empty($_POST)) {
-      $product_code = $_POST['product_code'];
-      $product_prices = str_replace(",", "", $_POST['product_price']);
-      $product_price_sends = str_replace(",", "", $_POST['product_price_send']);
-      $qtys = $_POST['qty'];
-      $qty_ends = $_POST['qty_end'];
+      $product_code = Util::input($_POST['product_code']);
+      $product_prices = str_replace(",", "", Util::input($_POST['product_price']));
+      $product_price_sends = str_replace(",", "", Util::input($_POST['product_price_send']));
+      $qtys = Util::input($_POST['qty']);
+      $qty_ends = Util::input($_POST['qty_end']);
       $i = 0;
 
       ProductPrice::model()->deleteAllByAttributes(array(
@@ -612,7 +614,7 @@ class ConfigController extends Controller {
     if (!empty($_POST)) {
       if (!empty($_POST['draw_price'])) {
         $drawCash = new DrawCash();
-        $drawCash->draw_price = $_POST['draw_price'];
+        $drawCash->draw_price = Util::input($_POST['draw_price']);
         $drawCash->draw_date = new CDbExpression("NOW()");
         
         if ($drawCash->save()) {
@@ -636,7 +638,7 @@ class ConfigController extends Controller {
   public function actionDrawcashDelete($id) {
     $this->checkLogin();
     
-    Drawcash::model()->deleteByPk($id);
+    Drawcash::model()->deleteByPk((int) $id);
     $this->redirect(array("DrawcashSetup"));
   }
 
@@ -644,12 +646,12 @@ class ConfigController extends Controller {
     $this->checkLogin();
 
     if (!empty($_POST)) {
-      $barcodes = $_POST['barcode'];
-      $price_befores = $_POST['price_before'];
-      $prices = $_POST['price'];
-      $qtys = $_POST['qty'];
-      $names = $_POST['name'];
-      $barcode_fk = $_POST['product_code'];
+      $barcodes = Util::input($_POST['barcode']);
+      $price_befores = Util::input($_POST['price_before']);
+      $prices = Util::input($_POST['price']);
+      $qtys = Util::input($_POST['qty']);
+      $names = Util::input($_POST['name']);
+      $barcode_fk = Util::input($_POST['product_code']);
 
       if (!empty($barcodes)) {
         $size = count($barcodes);
@@ -684,18 +686,18 @@ class ConfigController extends Controller {
     $configSoftware = ConfigSoftware::model()->find();
 
     if (!empty($_POST)) {
-      $configSoftware->alert_min_stock = $_POST['alert_min_stock'];
-      $configSoftware->bill_slip_title = $_POST['bill_slip_title'];
-      $configSoftware->bill_send_title = $_POST['bill_send_title'];
-      $configSoftware->bill_vat_title = $_POST['bill_vat_title'];
-      $configSoftware->bill_sale_title = $_POST['bill_sale_title'];
-      $configSoftware->bill_drop_title = $_POST['bill_drop_title'];
-      $configSoftware->items_per_page = $_POST['items_per_page'];
-      $configSoftware->bill_slip_footer = $_POST['bill_slip_footer'];
-      $configSoftware->bill_send_footer = $_POST['bill_send_footer'];
-      $configSoftware->bill_vat_footer = $_POST['bill_vat_footer'];
-      $configSoftware->bill_sale_footer = $_POST['bill_sale_footer'];
-      $configSoftware->bill_drop_footer = $_POST['bill_drop_footer'];
+      $configSoftware->alert_min_stock = Util::input($_POST['alert_min_stock']);
+      $configSoftware->bill_slip_title = Util::input($_POST['bill_slip_title']);
+      $configSoftware->bill_send_title = Util::input($_POST['bill_send_title']);
+      $configSoftware->bill_vat_title = Util::input($_POST['bill_vat_title']);
+      $configSoftware->bill_sale_title = Util::input($_POST['bill_sale_title']);
+      $configSoftware->bill_drop_title = Util::input($_POST['bill_drop_title']);
+      $configSoftware->items_per_page = Util::input($_POST['items_per_page']);
+      $configSoftware->bill_slip_footer = Util::input($_POST['bill_slip_footer']);
+      $configSoftware->bill_send_footer = Util::input($_POST['bill_send_footer']);
+      $configSoftware->bill_vat_footer = Util::input($_POST['bill_vat_footer']);
+      $configSoftware->bill_sale_footer = Util::input($_POST['bill_sale_footer']);
+      $configSoftware->bill_drop_footer = Util::input($_POST['bill_drop_footer']);
       
       if ($configSoftware->save()) {
         Yii::app()->user->setFlash('message', 'บันทึกรายการแล้ว');
@@ -778,7 +780,7 @@ class ConfigController extends Controller {
     $configSoftware = ConfigSoftware::model()->find();
 
     if (!empty($_POST)) {
-      $configSoftware->count_hour = trim($_POST['hour']);
+      $configSoftware->count_hour = Util::input($_POST['hour']);
       $configSoftware->save();
     }
 
@@ -797,9 +799,9 @@ class ConfigController extends Controller {
       $sale_can_add_sub_price = 'no';
       $sale_out_of_stock = 'no';
 
-      $sale_can_edit_price = @$_POST['ConfigSoftware']['sale_can_edit_price'];
-      $sale_can_add_sub_price = @$_POST['ConfigSoftware']['sale_can_add_sub_price'];
-      $sale_out_of_stock = @$_POST['ConfigSoftware']['sale_out_of_stock'];
+      $sale_can_edit_price = @Util::input($_POST['ConfigSoftware']['sale_can_edit_price']);
+      $sale_can_add_sub_price = @Util::input($_POST['ConfigSoftware']['sale_can_add_sub_price']);
+      $sale_out_of_stock = @Util::input($_POST['ConfigSoftware']['sale_out_of_stock']);
 
       $configSoftware->sale_can_edit_price = $sale_can_edit_price;
       $configSoftware->sale_can_add_sub_price = $sale_can_add_sub_price;

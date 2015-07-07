@@ -15,7 +15,7 @@
   <input type="hidden" name="excelFile" id="excelFile" />
 </form>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">เลือกไฟล์จาก Excel</div>
   <div class="panel-body">
     <div class="alert alert-danger">
@@ -62,7 +62,7 @@
       </tbody>
     </table>
 
-    <a href="#" class="btn btn-primary btn-lg" onclick="browseFile()">
+    <a href="#" class="btn btn-info btn-lg" onclick="browseFile()">
       <i class="glyphicon glyphicon-download"></i>
       เลือกไฟล์เพื่อนำเข้า กดที่นี่ (ไฟล์นามสกุล .csv เท่านั้น)
     </a>

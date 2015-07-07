@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">รายงานยอดขาย</div>
   <div class="panel-body">
     <form class="form-inline">

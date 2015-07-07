@@ -1,8 +1,8 @@
 <style>
   #textSum {
-    background-color: #808080;
-    color: greenyellow;
-    font-size: 23px;
+    background-color: #656D78;
+    color: #A0D468;
+    font-size: 50px;
     font-weight: bold;
     border: #000000 1px solid;
     text-align: right;
@@ -10,7 +10,7 @@
     padding-top: 2px;
     padding-bottom: 2px;
     display: inline-block;
-    width: 120px;
+    width: 300px;
   }
 
   .mynav {
@@ -688,8 +688,9 @@
     });
   </script>
 <?php endif; ?>
+
 <div id="log"></div>
-<table width="100%">
+<table width="100%" style="background: #fff">
   <tr valign="top">
     <td>
     <div class="" style="margin: 10px; margin-right: 5px">
@@ -755,122 +756,125 @@
           )
         ));
         ?>
-        <div style="margin: 0px; padding: 0px">
-          <div class="pull-left">
-            <div>
-              <label style="width: 75px"></label>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalVat">
-                <i class="glyphicon glyphicon-plus"></i>
-                Vat
-              </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalSale">
-                <i class="glyphicon glyphicon-cog"></i>
-                เงื่อนไขการขาย
-              </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalGarantee">
-                <i class="glyphicon glyphicon-heart"></i>
-                รับประกัน
-              </a>
-              <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modalBill">
-                <i class="glyphicon glyphicon-file"></i>
-                ข้อมูลบิล
-              </a>
+        <div class="pull-left">
+          <div style="margin: 0px; padding: 0px">
+            <div class="">
+              <div>
+                <label style="width: 75px"></label>
+                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modalVat">
+                  <i class="glyphicon glyphicon-plus"></i>
+                  Vat
+                </a>
+                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modalSale">
+                  <i class="glyphicon glyphicon-cog"></i>
+                  เงื่อนไขการขาย
+                </a>
+                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modalGarantee">
+                  <i class="glyphicon glyphicon-heart"></i>
+                  รับประกัน
+                </a>
+                <a href="#" class="btn btn-info" data-toggle="modal" data-target="#modalBill">
+                  <i class="glyphicon glyphicon-file"></i>
+                  ข้อมูลบิล
+                </a>
+              </div>
             </div>
           </div>
 
+          <div style="margin: 0px; padding: 0px">
+            <?php
+            if (!empty($sessionBillSale['BillSale'])) {
+              $branchId = $sessionBillSale['BillSale']['branch_id'];
+              $model['branch_id'] = $branchId;
+            }
+            ?>
+            <?php
+            echo $form->labelEx($model, 'branch_id', array(
+                'style' => 'width: 80px'
+            ));
+            ?>
+            <?php
+            echo $form->dropdownlist($model, 'branch_id', $branchList, array(
+                'class' => 'form-control',
+                'style' => 'width: 200px'
+            ));
+            ?>
+
+            <?php
+            $member_code = "";
+            $member_name = "";
+
+            if (!empty($sessionBillSale['member_code'])) {
+              $member_code = $sessionBillSale['member_code'];
+            }
+            if (!empty($sessionBillSale['member_name'])) {
+              $member_name = $sessionBillSale['member_name'];
+            }
+            ?>
+          </div>
+
+          <div>
+            <label style="width: 80px">สมาชิก</label>
+                    <input type="hidden" name="member_code" value="<?php echo $member_code; ?>" />
+                    <input type="hidden" name="member_name" value="<?php echo $member_name; ?>" />
+                    <input type="text"
+                           id="member_code"
+                           name="txt_member_code"
+                           value="<?php echo $member_code; ?>"
+                           class="form-control"
+                           style="width: 100px" />
+                    <input type="text"
+                           id="member_name"
+                           name="txt_member_name"
+                           value="<?php echo $member_name; ?>"
+                           disabled="disabled"
+                           class="form-control"
+                           style="width: 300px" />
+                    <a href="#" class="btn btn-info" onclick="return browseMember()"
+                      data-toggle="modal" data-target="#myModal">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </a>
+                    <!--<a href="#" class="btn btn-primary">
+                      <i class="glyphicon glyphicon-cog"></i>
+                    </a>
+                  -->
+          </div>
+
+          <div style="margin: 0px; padding: 0px">
+            <div class="">
+              <label style="width: 80px">รหัสสินค้า</label>
+              <input type="text"
+                     name="product_code"
+                     id="product_code"
+                     class="form-control"
+                     style="width: 200px"
+                     />
+              <a href="#" class="btn btn-info" onclick="return browseProduct()"
+                data-toggle="modal" data-target="#myModal">
+                <i class="glyphicon glyphicon-search"></i>
+              </a>
+
+              <label style="width: 60px">จำนวน</label>
+              <input type="text"
+                     name="product_qty"
+                     value="1"
+                     class="form-control"
+                     style="width: 70px"
+                     />
+              <a href="javascript:void(0)" class="btn btn-info" onclick="sale()">
+                บันทึก
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pull-right">
           <div class="pull-right">
-            <label style="font-size: 20px; width: 50px">รวม: </label>
             <span id="textSum"><?php echo number_format($sumTotalPrice); ?></span>
           </div>
-
-          <div class="clearfix"></div>
         </div>
 
-        <div style="margin: 0px; padding: 0px">
-          <?php
-          if (!empty($sessionBillSale['BillSale'])) {
-            $branchId = $sessionBillSale['BillSale']['branch_id'];
-            $model['branch_id'] = $branchId;
-          }
-          ?>
-          <?php
-          echo $form->labelEx($model, 'branch_id', array(
-              'style' => 'width: 80px'
-          ));
-          ?>
-          <?php
-          echo $form->dropdownlist($model, 'branch_id', $branchList, array(
-              'class' => 'form-control',
-              'style' => 'width: 200px'
-          ));
-          ?>
-
-          <?php
-          $member_code = "";
-          $member_name = "";
-
-          if (!empty($sessionBillSale['member_code'])) {
-            $member_code = $sessionBillSale['member_code'];
-          }
-          if (!empty($sessionBillSale['member_name'])) {
-            $member_name = $sessionBillSale['member_name'];
-          }
-          ?>
-        </div>
-
-        <div>
-          <label style="width: 80px">สมาชิก</label>
-                  <input type="hidden" name="member_code" value="<?php echo $member_code; ?>" />
-                  <input type="hidden" name="member_name" value="<?php echo $member_name; ?>" />
-                  <input type="text"
-                         id="member_code"
-                         name="txt_member_code"
-                         value="<?php echo $member_code; ?>"
-                         class="form-control"
-                         style="width: 100px" />
-                  <input type="text"
-                         id="member_name"
-                         name="txt_member_name"
-                         value="<?php echo $member_name; ?>"
-                         disabled="disabled"
-                         class="form-control"
-                         style="width: 300px" />
-                  <a href="#" class="btn btn-primary" onclick="return browseMember()"
-                    data-toggle="modal" data-target="#myModal">
-                    <i class="glyphicon glyphicon-search"></i>
-                  </a>
-                  <!--<a href="#" class="btn btn-primary">
-                    <i class="glyphicon glyphicon-cog"></i>
-                  </a>
-                -->
-        </div>
-
-        <div style="margin: 0px; padding: 0px">
-          <div class="form-search">
-            <label style="width: 80px">รหัสสินค้า</label>
-            <input type="text"
-                   name="product_code"
-                   id="product_code"
-                   class="form-control"
-                   style="width: 200px"
-                   />
-            <a href="#" class="btn btn-primary" onclick="return browseProduct()"
-              data-toggle="modal" data-target="#myModal">
-              <i class="glyphicon glyphicon-search"></i>
-            </a>
-
-            <label style="width: 60px">จำนวน</label>
-            <input type="text"
-                   name="product_qty"
-                   value="1"
-                   class="form-control"
-                   style="width: 70px"
-                   />
-            <a href="javascript:void(0)" class="btn btn-primary" onclick="sale()">
-              บันทึก
-            </a>
-          </div>
-        </div>
+        <div class="clearfix"></div>
 
           <div class="" style="background-color: white;">
             <table class="table table-bordered table-striped items" width="100%">
@@ -1068,7 +1072,7 @@
                 <input type="text" name="product_serial_no" class="form-control"
                        style="width: 120px" />
                 <label style="width: 110px">วันหมดประกัน</label>
-                <input type="text" name="product_expire_date" class="form-control calendar"
+                <input type="text" name="product_expire_date" class="form-control datepicker"
                      style="width: 117px" />
               </div>
             </div>
@@ -1096,7 +1100,7 @@
                   }
                   echo $form->textField($model, 'bill_sale_created_date', array(
                       'value' => $created_date,
-                      'class' => 'form-control calendar',
+                      'class' => 'form-control datepicker',
                       'style' => 'width: 100px'
                   ));
                 ?>
@@ -1177,7 +1181,7 @@
     <?php if (count($products) > 0): ?>
     <td width="200px">
       <!-- สินค้าขายบ่อย -->
-      <div class="panel panel-primary" style="margin-top: 10px; margin-right: 5px">
+      <div class="panel panel-info" style="margin-top: 10px; margin-right: 5px">
         <div class="panel-heading">รายการสินค้าขายบ่อย</div>
         <div class="panel-body" style="padding: 0px; height: 500px; overflow-y: scroll">
           <table class="table table-bordered table-striped">

@@ -24,7 +24,7 @@ class PayTypeController extends CController {
     $payType = new PayType();
 
     if (!empty($_POST)) {
-      $id = $_POST['PayType']['id'];
+      $id = Util::input($_POST['PayType']['id']);
 
       if (!empty($id)) {
         $payType = PayType::model()->findByPk((int) $id);

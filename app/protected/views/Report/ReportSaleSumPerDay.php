@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานยอดขายวัน</div>
     <div class="panel-body">
         <form name="form1" action="index.php?r=Report/SaleSumPerDay" method="post">
@@ -16,7 +16,7 @@
         </div>
         <div>
             <label></label>
-            <a href="#" class="btn btn-primary" onclick="document.form1.submit();">
+            <a href="#" class="btn btn-info" onclick="document.form1.submit();">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงรายงาน
             </a>

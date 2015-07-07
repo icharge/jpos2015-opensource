@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">บันทึกข้อมูล ผู้ใช้งานระบบ</div>
     <div class="panel-body">
 			<?php $form = $this->beginWidget('CActiveForm', array(
@@ -66,7 +66,7 @@
 			
 			<div>
 				<label></label>
-				<a href="#" onclick="formUser.submit()" class="btn btn-primary">
+				<a href="#" onclick="formUser.submit()" class="btn btn-info">
 					<b class="glyphicon glyphicon-floppy-disk"></b>
 					Save
 				</a>

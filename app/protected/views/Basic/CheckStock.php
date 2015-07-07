@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">ตรวจสอบสต้อก</div>
     <div class="panel-body">
         <?php $form = $this->beginWidget('CActiveForm'); ?>
@@ -11,7 +11,7 @@
                 'style' => 'width: 200px'
             ));
             ?>
-            <a href="#" class="btn btn-primary" onclick="document.forms[0].submit()">
+            <a href="#" class="btn btn-info" onclick="document.forms[0].submit()">
             		<b class="glyphicon glyphicon-search"></b>
             		แสดงรายการ
             </a>

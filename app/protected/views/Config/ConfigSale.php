@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">ตั้งค่า เงื่อนไขการขาย</div>
   <div class="panel-body">
     <?php if (Yii::app()->user->hasFlash('message')): ?>
@@ -46,7 +46,7 @@
         </tbody>
       </table>
       
-      <input type="submit" class="btn btn-primary" value="บันทึก" />
+      <input type="submit" class="btn btn-info" value="บันทึก" />
     </form>
   </div>  
 </div>

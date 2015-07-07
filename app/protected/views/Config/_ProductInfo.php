@@ -12,7 +12,7 @@
       echo $form->errorSummary($model);
       ?>
       <div>
-        <div class="form-search">
+        <div class="">
           <?php echo $form->labelEx($model, "product_code"); ?>
           <?php
           echo $form->textField($model, "product_code", array(
@@ -20,11 +20,11 @@
               'style' => 'width: 200px'
           ));
           ?>
-          <a href="#" class="btn btn-success" title="สร้างรหัสอัตโนมัติ" onclick="genProductCode()">
+          <a href="#" class="btn btn-info" title="สร้างรหัสอัตโนมัติ" onclick="genProductCode()">
             <i class="glyphicon glyphicon-export"></i>
             สร้างรหัสบาร์โค้ด
           </a>
-          <a href="#" class="btn btn-success" title="พิมพ์บาโค้ด" onclick="printBarCode()">
+          <a href="#" class="btn btn-info" title="พิมพ์บาโค้ด" onclick="printBarCode()">
             <span class="glyphicon glyphicon-barcode"></span>
             พิมพ์บาโค้ด
           </a>
@@ -42,7 +42,7 @@
       </div>
 
       <div>
-        <div class="form-search">
+        <div class="">
           <?php echo $form->labelEx($model, "group_product_id"); ?>
           <?php
           echo $form->textField($model, "group_product_id", array(
@@ -61,9 +61,8 @@
               'style' => 'width: 400px'
           ));
           ?>
-          <a href="#" class="btn btn-success" onclick="return dialogGroupProduct()" data-toggle="modal" data-target="#myModal">
+          <a href="#" class="btn btn-info" onclick="return dialogGroupProduct()" data-toggle="modal" data-target="#myModal">
             <i class="glyphicon glyphicon-search"></i>
-            ...
           </a>
         </div>
       </div>
@@ -158,14 +157,6 @@
         </span>
       </div>
       <div>
-        <?php echo $form->labelEx($model, "product_expire_date"); ?>
-        <?php
-        echo $form->textField($model, "product_expire_date", array(
-            'class' => 'form-control calendar',
-            'style' => 'width: 100px'
-        ));
-        ?>
-
         <?php echo $form->labelEx($model, "product_sale_condition"); ?>
         <span class="alert alert-info" style="padding: 9px">
           <?php
@@ -181,6 +172,14 @@
           ));
           ?> กำหนดจำนวนก่อนทุกครั้ง
         </span>
+
+        <?php echo $form->labelEx($model, "product_expire_date"); ?>
+        <?php
+        echo $form->textField($model, "product_expire_date", array(
+            'class' => 'form-control datepicker',
+            'style' => 'width: 100px'
+        ));
+        ?>
       </div>
       <div style="margin-top: 8px; margin-bottom: 8px">
         <?php echo $form->labelEx($model, "product_return"); ?>
@@ -202,7 +201,7 @@
 
       <div>
         <label></label>
-        <a href="#" onclick="formProduct.submit()" class="btn btn-primary">
+        <a href="#" onclick="formProduct.submit()" class="btn btn-info">
           <b class="glyphicon glyphicon-floppy-disk"></b>
           Save
         </a>

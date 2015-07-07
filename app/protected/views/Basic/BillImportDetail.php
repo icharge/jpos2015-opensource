@@ -52,7 +52,7 @@
     }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">
 			รับเข้าสินค้าในบิล : 
 			<?php echo $modelBillImport->bill_import_code; ?>
@@ -71,11 +71,11 @@
         <div>
             <?php echo $form->labelEx($model, 'product_id'); ?>
             <input id="product_code" name="BillImportDetail[product_id]" class="form-control" style="width: 200px" />
-            <a href="#" class="btn btn-primary" onclick="return showProductName()">
+            <a href="#" class="btn btn-info" onclick="return showProductName()">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงข้อมูล
             </a>
-            <a href="#" class="btn btn-primary" onclick="return browseProduct()" data-toggle="modal" data-target="#myModal">
+            <a href="#" class="btn btn-info" onclick="return browseProduct()" data-toggle="modal" data-target="#myModal">
                 <i class="glyphicon glyphicon-search"></i>
                 ค้นหา
             </a>
@@ -87,7 +87,7 @@
                 'disabled' => 'disabled',
                 'id' => 'lblProductName',
                 'class' => 'form-control',
-								'style' => 'width: 550px',
+				'style' => 'width: 550px',
                 'value' => @$model->product->product_name == "" ? "" 
 													: $model->product->product_name
             )); ?>
@@ -119,7 +119,7 @@
             <?php echo $form->hiddenField($model, 'bill_import_code'); ?>
 						
 						<label></label>
-            <a href="#" onclick="document.form1.submit()" class="btn btn-primary">
+            <a href="#" onclick="document.form1.submit()" class="btn btn-info">
 							<b class="glyphicon glyphicon-floppy-disk"></b>
 							บันทึกรายการ
 						</a>
@@ -142,6 +142,7 @@
                 "class" => "pagination"
               )
             ),
+            'itemsCssClass' => 'table table-bordered table-striped',
             'columns' => array(
                 'bill_import_detail_id',
                 'product.product_code',

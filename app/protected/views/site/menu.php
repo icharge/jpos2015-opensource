@@ -8,7 +8,7 @@ $user = User::model()->findByPk((int) $user_id);
 <?php if (!empty($user)): ?>
 <div class="row">
   <div class="col-md-12">
-    <nav class="nav navbar-inverse" role="navigation" >
+    <nav class="nav navbar-inverse" style="background: #434A54" role="navigation" >
       <ul class="nav navbar-nav">
         <!-- menu -->
         <li class="dropdown">
@@ -18,6 +18,9 @@ $user = User::model()->findByPk((int) $user_id);
           </a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="index.php?r=Basic/Sale">ขายสินค้า</a></li>
+            <li><a href="index.php?r=Basic/SaleMobile"  target="_blank">ขายสินค้า (หน้าจอโทรศัพท์)</a></li>
+            
+            <?php if ($user->user_level == 'admin'): ?>
             <li><a href="index.php?r=Basic/GetSale">รับคืนสินค้า</a></li>
             <li><a href="index.php?r=Basic/ManageBill">จัดการบิลขาย</a></li>
             <li><a href="index.php?r=Basic/Repair">ซ่อมแซมสินค้า</a></li>
@@ -26,6 +29,8 @@ $user = User::model()->findByPk((int) $user_id);
             <li><a href="index.php?r=Basic/BillDrop">ใบวางบิล</a></li>
             <li><a href="index.php?r=Basic/BillQuotation">ใบเสนอราคา</a></li>
             <li><a href="index.php?r=Basic/CheckStock">เช็คสต็อก</a></li>
+            <?php endif; ?>
+
             <li class="divider"></li>
             <li><a href="index.php?r=Basic/ChangeProfile">เปลี่ยนรหัสผ่าน</a></li>
             <li><a href="index.php?r=Site/Home">พักหน้าจอ</a></li>

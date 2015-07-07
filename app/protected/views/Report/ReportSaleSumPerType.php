@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานยอดขายตามประเภท</div>
     <div class="panel-body">
         <?php echo CHtml::form(Yii::app()->controller->createUrl('//Report/SaleSumPerType'), 'post', array('name' => 'form1')); ?>
@@ -19,7 +19,7 @@
                 ));
             ?>
   
-            <a href="#" class="btn btn-primary" onclick="document.form1.submit();">
+            <a href="#" class="btn btn-info" onclick="document.form1.submit();">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงรายงาน
             </a>

@@ -94,7 +94,7 @@
       </tbody>
     </table>
   </form>
-  <a href="#" class="btn btn-primary" onclick="return formProductPriceSave()">
+  <a href="#" class="btn btn-info" onclick="return formProductPriceSave()">
     <b class="glyphicon glyphicon-floppy-disk"></b>
     บันทึก
   </a>

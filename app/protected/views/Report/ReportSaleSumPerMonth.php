@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">รายงานยอดขายตามเดือน</div>
     <div class="panel-body">
         <?php echo CHtml::form(Yii::app()->controller->createUrl('//Report/SaleSumPerMonth'), 'post', array('name' => 'form1')); ?>
@@ -11,7 +11,7 @@
                 ));
             ?>
   
-            <a href="#" class="btn btn-primary" onclick="document.form1.submit();">
+            <a href="#" class="btn btn-info" onclick="document.form1.submit();">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงรายงาน
             </a>
@@ -29,6 +29,7 @@
         <tbody>
             <?php for ($i = 1; $i <= 12; $i++): ?>
             <?php $total = $billSale->getSumPriceByMonthYear($i, $year); ?>
+            <?php $sum += $total; ?>
             <tr>
                 <td><?php echo $monthRange[$i]; ?></td>
                 <td style="text-align: right">
@@ -37,5 +38,13 @@
             </tr>
             <?php endfor; ?>
         </tbody>
+        <tfoot>
+            <tr>
+                <td><strong>รวม</strong></td>
+                <td style="text-align: right">
+                    <?php echo number_format($sum, 2); ?>
+                </td>
+            </tr>
+        </tfoot>
     </table>
 </div>

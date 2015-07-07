@@ -20,7 +20,7 @@
           <tr>
             <td style="text-align: center">
               <a style="color: white" href="#"
-                 class="btn btn-success"
+                 class="btn btn-info"
                  data-dismiss="modal"
                  onclick="return chooseGroupProduct(
               '<?php echo $r->group_product_code; ?>',

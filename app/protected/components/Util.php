@@ -18,10 +18,6 @@ class Util {
         }
     }
 
-    public static function input($data) {
-        return stripslashes(htmlspecialchars($data));
-    }
-
     public static function mysqlToThaiDate($date) {
         if ($date == '0000-00-00') {
             return '-';
@@ -31,14 +27,41 @@ class Util {
         }
 
         if (!empty($date)) {
-            $arr = explode(" ", $date);
-            $arr2 = explode("-", $arr[0]);
+            $arr = explode("/", $date);
+            $d = '';
+            $m = '';
+            $y = '';
 
-            $y = $arr2[0];
-            $m = $arr2[1];
-            $d = $arr2[2];
+            if (count($arr) == 3) {
+                if (!empty($arr[2])) {
+                    $y = $arr[2];
+                }
+                if (!empty($arr[1])) {
+                    $m = $arr[1];
+                }
+                if (!empty($arr[0])) {
+                    $d = $arr[0];
+                }
 
-            return "$d/$m/$y";
+                return "{$d}/{$m}/{$y}";
+            }
+
+            $arr = explode(' ', $date);
+
+            if (count($arr) == 2) {
+                $arr_date = explode('-', $arr[0]);
+                $_time = $arr[1];
+
+                $y = $arr_date[0];
+                $m = $arr_date[1];
+                $d = $arr_date[2];
+
+                $arr_time = explode(':', $_time);
+                $h = $arr_time[0];
+                $mi = $arr_time[1];
+
+                return "{$d}/{$m}/{$y} {$h}:{$mi}";
+            }
         }
     }
 
@@ -195,6 +218,24 @@ class Util {
       $output .= "{$satang}";
 
       return $output;
+    }
+
+    public static function input($data) {
+        if (!empty($data)) {
+            try {
+                if (gettype($data) == 'string') {
+                    $data = htmlspecialchars($data);
+                    $data = stripslashes($data);
+                    $data = str_replace(strtoupper('delete'), '', $data);
+                    $data = str_replace(strtoupper('update'), '', $data);
+                    $data = trim($data);
+                }
+            } catch (Exception $e) {
+
+            }
+        }
+        
+        return $data;
     }
 }
 

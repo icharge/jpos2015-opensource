@@ -83,11 +83,15 @@ $header = "
 if (!empty($member)) {
     $header .= "
     <div class='row'>
-        <span>ลูกค้า: {$member->member_name}</span>
+        <span><strong>ลูกค้า:</strong> {$member->member_name}</span>
         <span>&nbsp;&nbsp;&nbsp;</span>
-        <span>เบอร์โทร: {$member->member_tel}</span>
+        <span><strong>เบอร์โทร:</strong> {$member->member_tel}</span>
     </div>
-    <div class='row'>ที่อยู่: {$member->member_address}</div>
+    <div class='row'>
+        <span><strong>เลขประจำตัวผู้เสียภาษี:</strong> </span>
+        <span>{$member->tax_code}</span>
+    </div>
+    <div class='row'><strong>ที่อยู่:</strong> {$member->member_address}</div>
     <br />";
 }
 
@@ -197,7 +201,7 @@ $money_add = number_format($total_price, 2);
 $bonus_price = number_format($billSale->bonus_price, 2);
 $total_pay = number_format($total_price - $billSale->bonus_price, 2);
 
-$money_add_total = ($money_add - $out_vat);
+$money_add_total = ($total_price - $out_vat);
 $money_add_total = number_format($money_add_total, 2);
 
 $content .= "<table width='200px'>";
@@ -316,6 +320,18 @@ $footer = "
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </span>
             </td>
+        </tr>
+        <tr>
+            <td style='text-align: center; padding-top: 20px'>วันที่............................</td>
+            <td style='text-align: center; padding-top: 20px'>วันที่............................</td>
+            <td style='text-align: center; padding-top: 20px'>วันที่............................</td>
+            <td style='text-align: center; padding-top: 20px'>วันที่............................</td>
+            ";
+        if ($billType != "sale") {
+            $footer .= "<td style='text-align: center; padding-top: 20px'>วันที่............................</td>";
+        }
+
+        $footer .= "
         </tr>
     </table>
     <br />";

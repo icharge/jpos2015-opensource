@@ -18,7 +18,7 @@
   }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">
     ข้อมูลสินค้า
     <?php if (!empty($group_product_id)): ?>
@@ -68,6 +68,7 @@
             "class" => "pagination"
           )
         ),
+        'itemsCssClass' => 'table table-bordered table-striped',
         'columns' => array(
             'product_code',
             'product_pack_barcode',
@@ -82,9 +83,8 @@
                 'buttons' => array(
                     'edit' => array(
                         'label' => '
-                          <span class="btn btn-success">
-                            <b class="glyphicon glyphicon-align-justify"></b>
-                            แก้ไข
+                          <span class="btn btn-info">
+                            <b class="glyphicon glyphicon-pencil"></b>
                           </span>',
                         'url' => 'Yii::app()->createUrl("Config/ProductForm", array(
                           "id" => $data->product_id
@@ -96,8 +96,7 @@
                     'del' => array(
                         'label' => '
                           <span class="btn btn-danger">
-                            <b class="glyphicon glyphicon-minus-sign"></b>
-                            ลบ
+                            <b class="glyphicon glyphicon-remove"></b>
                           </span>',
                         'url' => 'Yii::app()->createUrl("Config/ProductDelete", array(
                           "id" => $data->product_id
@@ -109,7 +108,7 @@
                     )
                 ),
                 'htmlOptions' => array(
-                    'width' => '170px',
+                    'width' => '110px',
                     'align' => 'center'
                 )
             )

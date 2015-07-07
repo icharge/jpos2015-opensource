@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px;">
+<div class="panel panel-info" style="margin: 10px;">
   <div class="panel-heading">แก้ไขข้อมูลส่วนตัว</div>
   <div class="panel-body">
 
@@ -58,7 +58,7 @@
     
     <div>
       <label></label>
-      <a href="#" class="btn btn-primary" onclick="formChangeProfile.submit()">
+      <a href="#" class="btn btn-info" onclick="formChangeProfile.submit()">
         Save
       </a>
     </div>

@@ -1,16 +1,16 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">รายงานกำไร - ขาดทุน</div>
   <div class="panel-body">
     <div class="pull-left">
       <!-- form -->
       <form style="margin-bottom: 10px" method="post" name="formReportIncome">
         <label style="width: 50px">จากวันที่</label>
-        <input type="text" name="from" value="<?php echo $from; ?>" class="form-control calendar" style="width: 100px" />
+        <input type="text" name="from" value="<?php echo $from; ?>" class="form-control datepicker" style="width: 100px" />
 
         <label style="width: 50px">ถึงวันที่</label>
-        <input type="text" name="to" value="<?php echo $to; ?>" class="form-control calendar" style="width: 100px" />
+        <input type="text" name="to" value="<?php echo $to; ?>" class="form-control datepicker" style="width: 100px" />
 
-        <a href="#" onclick="document.formReportIncome.submit()" class="btn btn-primary">
+        <a href="#" onclick="document.formReportIncome.submit()" class="btn btn-info">
           แสดงรายงาน
         </a>
       </form>
@@ -35,7 +35,7 @@
             <i class="glyphicon glyphicon-plus"></i>
             รายได้
           </div>
-          <div class="panel-body">
+          <div class="">
             <?php if (!empty($billSaleDetails)): ?>
             <table class="table table-bordered table-striped">
               <thead>
@@ -97,7 +97,9 @@
               </tfoot>
             </table>
             <?php else: ?>
-            <h4>ยังไม่มีข้อมูล</h4>
+            <div style="padding: 20px">
+              <h4>ยังไม่มีข้อมูล</h4>
+            </div>
             <?php endif; ?>
           </div>
         </div>
@@ -110,7 +112,7 @@
             <i class="glyphicon glyphicon-minus"></i>
             ค่าใช้จ่าย
           </div>
-          <div class="panel-body">
+          <div class="">
             <?php if (!empty($pays)): ?>
             <table class="table table-bordered table-striped">
               <thead>
@@ -146,7 +148,9 @@
               </tfoot>
             </table>
             <?php else: ?>
-            <h4>ยังไม่มีข้อมูล</h4>
+            <div style="padding: 20px">
+              <h4>ยังไม่มีข้อมูล</h4>
+            </div>
             <?php endif; ?>
           </div>
         </div>

@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">รายงานสินค้า หมดสต้อก</div>
   <div class="panel-body">
     <!--

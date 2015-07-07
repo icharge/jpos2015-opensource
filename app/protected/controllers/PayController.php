@@ -27,7 +27,7 @@ class PayController extends Controller {
     $pay->created_at = new CDbExpression('NOW()');
 
     if (!empty($_POST)) {
-      $id = Util::input($_POST['Pay']['id']);
+      $id = Util::input((int) $_POST['Pay']['id']);
 
       if (!empty($id)) {
         $pay = Pay::model()->findByPk((int) $id);

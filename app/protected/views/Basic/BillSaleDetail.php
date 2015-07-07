@@ -1,9 +1,21 @@
-<div class="panel panel-primary" style="margin: 10px;">
+<div class="panel panel-info" style="margin: 10px;">
 	<div class="panel-heading">รายการในบิล / <?php echo $modelBillSale->bill_sale_id; ?></div>
   <div class="panel-body">
   		<?php
         $this->widget('zii.widgets.grid.CGridView', array(
             'dataProvider' => $dataProvider,
+            'itemsCssClass' => 'table table-bordered table-striped',
+            "pagerCssClass" => "pagination",
+            "pager" => array(
+              "selectedPageCssClass" => "active",
+              "firstPageCssClass" => "previous",
+              "lastPageCssClass" => "next",
+              "hiddenPageCssClass" => "disabled",
+              "header" => "",
+              "htmlOptions" => array(
+                "class" => "pagination"
+              )
+            ),
             'columns' => array(
                 array(
                     'name' => 'bill_sale_detail_id',
@@ -73,7 +85,7 @@
                         )
                     ),
                     'htmlOptions' => array(
-                        'width' => '100px',
+                        'width' => '110px',
                         'align' => 'center'
                     )
                 )

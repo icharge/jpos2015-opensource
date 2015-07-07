@@ -1,7 +1,7 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">ข้อมูลผู้ใช้งานระบบ</div>
     <div class="panel-body">
-			<a href="index.php?r=Config/UserForm" class="btn btn-primary">
+			<a href="index.php?r=Config/UserForm" class="btn btn-info">
 				<b class="glyphicon glyphicon-plus"></b>
 				เพิ่มรายการ
 			</a>
@@ -20,6 +20,7 @@
             "class" => "pagination"
           )
         ),
+        'itemsCssClass' => 'table table-bordered table-striped',
             'columns' => array(
                 'user_name',
                 'user_tel',
@@ -33,9 +34,8 @@
                     'buttons' => array(
                         'edit' => array(
                             'label' => '
-															<span class="btn btn-success">
-																<b class="glyphicon glyphicon-align-justify"></b>
-																แก้ไข
+															<span class="btn btn-info">
+																<b class="glyphicon glyphicon-pencil"></b>
 															</span>',
                             'url' => 'Yii::app()->createUrl("Config/UserForm", array(
 															"id" => $data->user_id
@@ -44,8 +44,7 @@
                         'del' => array(
                             'label' => '
 																<span class="btn btn-danger">
-																	<b class="glyphicon glyphicon-trash"></b>
-																	ลบ
+																	<b class="glyphicon glyphicon-remove"></b>
 																</span>
 														',
                             'url' => 'Yii::app()->createUrl("Config/UserDelete", array(
@@ -57,7 +56,7 @@
                         )
                     ),
                     'htmlOptions' => array(
-                        'width' => '180px',
+                        'width' => '110px',
                         'align' => 'center'
                     )
                 )

@@ -4,6 +4,14 @@
     });
 
     function doEndSale() {
+        // open draw cash
+        $.ajax({
+            url: 'index.php?r=Ajax/OpenDrawCash',
+            success: function(data) {
+                
+            }
+        });
+
         var total = $("#totalMoney").val();
         var input = $("#endSaleInputMoney").val();
         var returnMoney = $("#returnMoney").val();
@@ -125,7 +133,7 @@
 </style>
 
 <div class="panel panel-primary">
-    <div class="panel-body alert-info">
+    <div class="panel-body alert-info" style="background: #F5F7FA">
         <form class="form-inline">
             <div>
                 <label class="lbl-total">จำนวนเงิน</label>
@@ -142,7 +150,7 @@
                 	id="endSaleInputMoney" 
                 	onkeyup="processReturnMoney(event)" 
                 	class="input-money form-control" />
-                <a href="#" class="btn btn-primary btn-lg" style="font-size: 20px" onclick="payEqual()">
+                <a href="#" class="btn btn-info btn-lg" style="font-size: 20px" onclick="payEqual()">
                     จ่ายพอดี
                 </a>
             </div>
@@ -168,7 +176,7 @@
 
             <div>
 				<label></label>
-                <a href="javascript:void(0)" id="cmdEndSaleEnter" onclick="doEndSale()" class="btn btn-success" style="font-size: 30px">
+                <a href="javascript:void(0)" id="cmdEndSaleEnter" onclick="doEndSale()" class="btn btn-info" style="font-size: 30px">
                     จบการขาย
                     (ENTER)
                 </a>

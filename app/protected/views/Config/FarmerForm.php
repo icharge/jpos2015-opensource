@@ -1,4 +1,4 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">บันทึกรายการ ตัวแทนจำหน่าย</div>
     <div class="panel-body">
       <?php $form = $this->beginWidget('CActiveForm', array(
@@ -37,7 +37,7 @@
       <div>
         <label></label>
         <?php echo $form->hiddenField($model, 'farmer_id'); ?>
-        <a href="#" onclick="formFarmer.submit()" class="btn btn-primary">
+        <a href="#" onclick="formFarmer.submit()" class="btn btn-info">
           <b class="glyphicon glyphicon-floppy-disk"></b>
           Save
         </a>

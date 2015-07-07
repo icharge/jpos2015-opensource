@@ -46,30 +46,29 @@ $style .= "
 
 // header text
 $header_text = "
-<table width='100%'>
-	<tr>
-		<td colspan='2' class='center bold'>
+	<div>
+		<div class='center bold'>
 			ใบกำกับภาษี
-		</td>
-	</tr>
-	<tr>
-		<td colspan='2' class='text'>
+		</div>
+	</div>
+	<div>
+		<span class='text'>
 			เลขที่: <span class='bold'>{$billSale->bill_sale_id}</span>
 			วันที่: <span class='bold red'>{$nowThai}</span>
-		</td>
-	</tr>
-	<tr>
-		<td class='text'>
+		</span>
+	</div>
+	<div>
+		<span class='text'>
 			ร้าน: 
 			<span class='bold red'>{$org->org_name}</span>
-		</td>
-		<td class='text'>
+		</span>
+		<span class='text'>
 			สาขา:
 			<span class='bold red'>{$billSale->branch->branch_name}</span>
-		</td>
-	</tr>
-	<tr>
-		<td colspan='2' class='text'>
+		</span>
+	</div>
+	<div>
+		<span class='text'>
 			<div>{$org->org_address_1}</div>
 			<div>{$org->org_address_2}</div>
 			<div>{$org->org_address_3}</div>
@@ -83,24 +82,30 @@ $header_text = "
 					โทรศัพท์: {$org->org_tel}				
 				</span>
 				
-				แฟกซ์: {$org->org_fax}
+				<span>
+					แฟกซ์: {$org->org_fax}
+				</span>
 			</div>	
-		</td>
-	</tr>
-	<tr>
-		<td colspan='2' class='text'>
+		</span>
+	</div>
+	<div>
+		<span class='text'>
 			<div class=''>
 				<strong>ลูกค้า</strong>
 				<span>
 					{$billSale->member->member_code} 
 					{$billSale->member->member_name}
 				</span>
+
+				<strong>เบอร์โทร: </strong>
+				<span>{$billSale->member->member_tel}</span>
+
+				<strong>เลขประจำตัวผู้เสียภาษี: </strong>
+				<span>{$billSale->member->tax_code}</span>
 			</div>
-			<div>{$billSale->member->member_tel}</div>
 			<div>{$billSale->member->member_address}</div>
-		</td>
-	</tr>
-</table>
+		</span>
+	</div>
 ";
 
 // body

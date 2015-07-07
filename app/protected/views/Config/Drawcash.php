@@ -1,10 +1,10 @@
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
   <div class="panel-heading">เงินในลิ้นชักวันนี้</div>
   <div class="panel-body">
     <form name="formDrawcash" method="post" class="form-inline">
       <strong>จำนวนเงินวันนี้</strong>
       <input type="text" name="draw_price" class="form-control" style="width: 100px" />
-      <a href="#" class="btn btn-primary" onclick="document.formDrawcash.submit()">
+      <a href="#" class="btn btn-info" onclick="document.formDrawcash.submit()">
         <i class="glyphicon glyphicon-ok"></i>
         บันทึก
       </a>
@@ -12,6 +12,18 @@
 
     <?php $this->widget('zii.widgets.grid.CGridView', array(
       'dataProvider' => $drawCashs,
+      'itemsCssClass' => 'table table-bordered table-striped',
+      "pagerCssClass" => "pagination",
+        "pager" => array(
+          "selectedPageCssClass" => "active",
+          "firstPageCssClass" => "previous",
+          "lastPageCssClass" => "next",
+          "hiddenPageCssClass" => "disabled",
+          "header" => "",
+          "htmlOptions" => array(
+            "class" => "pagination"
+          )
+        ),
       'columns' => array(
         array(
           'name' => 'draw_date',
@@ -31,13 +43,13 @@
           'header' => '',
           'type' => 'raw',
           'value' => '
-            CHtml::link("<i class=\"glyphicon glyphicon-minus-sign\"></i> ลบ", array("Config/DrawcashDelete", "id" => $data->id), array(
+            CHtml::link("<i class=\"glyphicon glyphicon-remove\"></i>", array("Config/DrawcashDelete", "id" => $data->id), array(
               "class" => "btn btn-danger",
               "onclick" => "return confirm(\"ยืนยันการลบ\")"
             ))
           ',
           'htmlOptions' => array(
-            'width' => '90px',
+            'width' => '55px',
             'align' => 'center'
           )
         )

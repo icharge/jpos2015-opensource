@@ -104,7 +104,7 @@
     }
 </script>
 
-<div class="panel panel-primary" style="margin: 10px">
+<div class="panel panel-info" style="margin: 10px">
     <div class="panel-heading">พิมพ์ใบวางบิล</div>
     <div class="panel-body">
         <?php
@@ -123,13 +123,12 @@
             <input type="text" name="to" id="to" class="form-control" style="width: 200px" value="<?php echo Util::mysqlToThaiDate($to); ?>" />
         </div>
         <div>
-            <div class="form-search">
+            <div class="">
             <label>สมาชิก</label>
             <input type="text" name="member_code" id="member_code" class="form-control" style="width: 150px" value="<?php echo $member_code; ?>" />
             <input type="text" name="member_name" id="member_name" value="<?php echo $member_name; ?>" class="form-control disabled" style="width: 362px" readonly="readonly" />
-            <a href="#" class="btn btn-primary" onclick="browseMember()" data-toggle="modal" data-target="#myModal">
+            <a href="#" class="btn btn-info" onclick="browseMember()" data-toggle="modal" data-target="#myModal">
                 <i class="glyphicon glyphicon-search"></i>
-                ...
             </a>
             </div>
         </div>
@@ -142,7 +141,7 @@
         </div>
         <div>
             <label></label>
-            <a href="#" class="btn btn-success" onclick="showData();">
+            <a href="#" class="btn btn-info" onclick="showData();">
                 <i class="glyphicon glyphicon-ok"></i>
                 แสดงรายการ
             </a>
@@ -152,11 +151,11 @@
 
         <form id="formData">
             <div>
-                <a href="#" class="btn btn-primary" onclick="getBillDrop()">
+                <a href="#" class="btn btn-info" onclick="getBillDrop()">
                   <i class="glyphicon glyphicon-list-alt"></i>
                   รับบิล
                 </a>
-                <a href="#" class="btn btn-primary" onclick="printBillDrop()">
+                <a href="#" class="btn btn-info" onclick="printBillDrop()">
                   <i class="glyphicon glyphicon-print"></i>
                   พิมพ์ใบวางบิล
                 </a>
@@ -175,6 +174,7 @@
                 $this->widget('zii.widgets.grid.CGridView', array(
                     'dataProvider' => $dataProvider,
                     'selectableRows' => 2,
+                    'itemsCssClass' => 'table table-bordered table-striped',
                     'columns' => array(
                         array(
                             'class' => 'CCheckBoxColumn',
